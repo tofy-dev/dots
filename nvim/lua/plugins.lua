@@ -29,13 +29,14 @@ return require('packer').startup(function()
   -- ==============================================================================================
   -- autocomplete 
   -- ==============================================================================================
-  use {
-    'ms-jpq/coq_nvim', branch = 'coq', requires = {
-      {'ms-jpq/coq.artifacts', branch = 'artifacts'},
-      {'ms-jpq/coq.thirdparty', branch = '3p'}
-    }
-  }
-  use {'neoclide/coc.nvim', branch = 'release'}
+  use 'neovim/nvim-lspconfig'
+  use 'hrsh7th/cmp-nvim-lsp'
+  use 'hrsh7th/cmp-buffer'
+  use 'hrsh7th/cmp-path'
+  use 'hrsh7th/cmp-cmdline'
+  use 'hrsh7th/nvim-cmp'
+  use 'hrsh7th/cmp-vsnip'
+  use 'hrsh7th/vim-vsnip'
 
   -- ==============================================================================================
   -- colorschemes
