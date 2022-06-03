@@ -1,0 +1,195 @@
+// COLORS =========================================================================================
+$red: #f28fad;
+$orange: #f8bd96;
+$yellow: #fae3b0;
+$green: #abe9b3;
+$teal: #b5e8e0;
+$blue: #96cdfb;
+$sky: #89dceb;
+$purple: #ddb6f2;
+$pink: #f5c2e7;
+$maroon: #e8a2af;
+
+$black: #1E1E2E;
+$black2: #1A1826;
+$black3: #161320;
+// COLORS =========================================================================================
+
+* {
+  all: unset;
+  font-family: "Cartograph CF";
+}
+
+.sideways_bar {
+  background-color: #1A1826;
+}
+
+.hour {
+  font-size: 20px;
+  color: #96cdfb;
+}
+
+.min {
+  font-size: 20px;
+  color: #b5e8e0;
+}
+
+.spc1 {
+  font-size: 29px;
+}
+.spc1.active {
+  background-color: #ddb6f2;
+  color: #161320;
+}
+.spc1.inactive {
+  color: #ddb6f2;
+}
+
+.spc2 {
+  font-size: 29px;
+}
+.spc2.active {
+  background-color: #f5c2e7;
+  color: #161320;
+}
+.spc2.inactive {
+  color: #f5c2e7;
+}
+
+.spc3 {
+  font-size: 29px;
+}
+.spc3.active {
+  background-color: #e8a2af;
+  color: #161320;
+}
+.spc3.inactive {
+  color: #e8a2af;
+}
+
+.spc4 {
+  font-size: 29px;
+}
+.spc4.active {
+  background-color: #f28fad;
+  color: #161320;
+}
+.spc4.inactive {
+  color: #f28fad;
+}
+
+.spc5 {
+  font-size: 29px;
+}
+.spc5.active {
+  background-color: #f8bd96;
+  color: #161320;
+}
+.spc5.inactive {
+  color: #f8bd96;
+}
+
+.spc6 {
+  font-size: 29px;
+}
+.spc6.active {
+  background-color: #fae3b0;
+  color: #161320;
+}
+.spc6.inactive {
+  color: #fae3b0;
+}
+
+.spc7 {
+  font-size: 29px;
+}
+.spc7.active {
+  background-color: #abe9b3;
+  color: #161320;
+}
+.spc7.inactive {
+  color: #abe9b3;
+}
+
+.spc8 {
+  font-size: 29px;
+}
+.spc8.active {
+  background-color: #b5e8e0;
+  color: #161320;
+}
+.spc8.inactive {
+  color: #b5e8e0;
+}
+
+.spc9 {
+  font-size: 29px;
+}
+.spc9.active {
+  background-color: #96cdfb;
+  color: #161320;
+}
+.spc9.inactive {
+  color: #96cdfb;
+}
+
+.spc10 {
+  font-size: 29px;
+}
+.spc10.active {
+  background-color: #89dceb;
+  color: #161320;
+}
+.spc10.inactive {
+  color: #89dceb;
+}
+
+.padding {
+    background-color: $orange;
+}
+
+.powermenu {
+  font-size: 29px;
+}
+
+.button-reboot {
+    color: $green;
+}
+
+.button-logout {
+    color: $blue;
+}
+
+.button-lock {
+    color: $purple;
+}
+
+.button-off {
+    color: $red;
+}
+
+.brightmenu {
+    font-size: 29px;
+    color: $orange;
+}
+
+.volumemenu {
+    font-size: 29px;
+    color: $yellow;
+}
+
+scale trough {
+  all: unset;
+  background-color: $red;
+  border-radius: 5px;
+  min-height: 80px;
+  min-width: 15px;
+  margin: .3rem 0 .3rem 0;
+}
+
+.bribar trough highlight {
+  background-color: $blue;
+  border-radius: 5px;
+}
+
+/*# sourceMappingURL=eww.css.map */

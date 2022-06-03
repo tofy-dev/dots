@@ -1,0 +1,62 @@
+font:
+  normal:
+    family: CartographCF
+    style: Regular
+  bold:
+    family: CartographCF
+    style: Bold
+  italic:
+    family: CartographCF
+    style: Italic
+  bold_italic:
+    family: CartographCF
+    style: Bold Italic
+  size: 12.5
+
+# Catppuccin!
+schemes:
+  catppucin: &catppuccin
+    primary:
+      background: '#1A1826'
+      foreground: '#d9e0ee'
+    normal:
+      black:      '#302d41'
+      red:        '#f28fad'
+      green:      '#abe9b3'
+      yellow:     '#fae3b0'
+      blue:       '#96cdfb'
+      magenta:    '#ddb6f2'
+      cyan:       '#f5c2e7'
+      white:      '#d9e0ee'
+    bright:
+      black:      '#302d41'
+      red:        '#f28fad'
+      green:      '#abe9b3'
+      yellow:     '#fae3b0'
+      blue:       '#96cdfb'
+      magenta:    '#ddb6f2'
+      cyan:       '#f5c2e7'
+      white:      '#d9e0ee'
+  everforest_dark_hard: &everforest_dark_hard
+    primary:
+      background: '#2b3339'
+      foreground: '#d3c6aa'
+    normal:
+      black:      '#4b565c'
+      red:        '#e67e80'
+      green:      '#a7c080'
+      yellow:     '#dbbc7f'
+      blue:       '#7fbbb3'
+      magenta:    '#d699b6'
+      cyan:       '#83c092'
+      white:      '#d3c6aa'
+    bright:
+      black:      '#4b565c'
+      red:        '#e67e80'
+      green:      '#a7c080'
+      yellow:     '#dbbc7f'
+      blue:       '#7fbbb3'
+      magenta:    '#d699b6'
+      cyan:       '#83c092'
+      white:      '#d3c6aa'
+colors: *catppuccin
