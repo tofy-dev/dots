@@ -11,19 +11,16 @@ return require('packer').startup(function()
     },
     config = function() require'nvim-tree'.setup {} end
   }
-  use 'tamton-aquib/staline.nvim'
+  use {
+      'romgrk/barbar.nvim',
+      requires = {'kyazdani42/nvim-web-devicons'}
+  }
 
   -- ==============================================================================================
   -- language support
   -- ==============================================================================================
   use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
-  use 'neovim/nvim-lspconfig'
   use 'dense-analysis/ale'
-  use 'sheerun/vim-polyglot'
-  -- langs 
-  use 'euclidianAce/BetterLua.vim'
-  use 'jbyuki/one-small-step-for-vimkind'
-  use 'bfrg/vim-cpp-modern'
   use 'lervag/vimtex'
 
   -- ==============================================================================================
@@ -43,7 +40,6 @@ return require('packer').startup(function()
   -- ==============================================================================================
   use 'sainnhe/everforest'
   use 'sainnhe/sonokai'
-  use 'morhetz/gruvbox'
   use 'joshdick/onedark.vim'
   use 'franbach/miramare'
   use {'catppuccin/nvim', as = 'catppuccin'}

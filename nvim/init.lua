@@ -29,20 +29,6 @@ let g:netrw_browse_split= 2
 let g:netrw_banner = 0
 let g:netrw_winsize = 25
 let g:ctrlp_use_caching= 0
-
-nnoremap <leader>h :wincmd h<CR>
-nnoremap <leader>j :wincmd j<CR>
-nnoremap <leader>k :wincmd k<CR>
-nnoremap <leader>l :wincmd l<CR>
-
-nnoremap <leader>u :UndotreeShow<CR>
-nnoremap <leader><enter> :split term://zsh<CR>
-
-nnoremap <leader>t :tabnew<CR>
-nnoremap <leader>q :tabclose<CR>
-nnoremap <Left> :tabprevious<CR>
-nnoremap <Right> :tabnext<CR>
-
 highlight ColorColumn guibg=#F5C2E7
 ]]
 
@@ -50,7 +36,6 @@ require('plugins')
 require('colors')
 require('keybinds')
 
-require('configs/vim-tex-config')
-require('configs/nvim-tree-config')
 require('configs/autocomplete-config')
-require('configs/staline-config')
+require('configs/nvim-tree-config')
+require('configs/vim-tex-config')

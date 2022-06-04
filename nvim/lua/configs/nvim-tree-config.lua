@@ -1,11 +1,3 @@
--- =================================================================================================
--- ███╗   ██╗██╗   ██╗██╗███╗   ███╗   ████████╗██████╗ ███████╗███████╗
--- ████╗  ██║██║   ██║██║████╗ ████║   ╚══██╔══╝██╔══██╗██╔════╝██╔════╝
--- ██╔██╗ ██║██║   ██║██║██╔████╔██║█████╗██║   ██████╔╝█████╗  █████╗  
--- ██║╚██╗██║╚██╗ ██╔╝██║██║╚██╔╝██║╚════╝██║   ██╔══██╗██╔══╝  ██╔══╝  
--- ██║ ╚████║ ╚████╔╝ ██║██║ ╚═╝ ██║      ██║   ██║  ██║███████╗███████╗
--- ╚═╝  ╚═══╝  ╚═══╝  ╚═╝╚═╝     ╚═╝      ╚═╝   ╚═╝  ╚═╝╚══════╝╚══════╝
--- =================================================================================================
 vim.g.nvim_tree_git_hl                     = 1
 vim.g.nvim_tree_highlight_opened_files     = 1
 vim.g.nvim_tree_root_folder_modifier       = ':~'
@@ -48,7 +40,3 @@ vim.g.nvim_tree_icons = {
     default = "",
     symlink = "",
 }
-
-vim.api.nvim_set_keymap('n', '<leader><tab>', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>r', ':NvimTreeRefresh<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>n', ':NvimTreeFindFile<CR>', { noremap = true, silent = true })
