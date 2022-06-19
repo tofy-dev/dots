@@ -1,4 +1,6 @@
-// COLORS =========================================================================================
+// =================================================================================================
+// COLORS 
+// =================================================================================================
 $red: #f28fad;
 $orange: #f8bd96;
 $yellow: #fae3b0;
@@ -13,141 +15,92 @@ $maroon: #e8a2af;
 $black: #1E1E2E;
 $black2: #1A1826;
 $black3: #161320;
-// COLORS =========================================================================================
 
+// =================================================================================================
+// GLOBAL BAR STUFF
+// =================================================================================================
 * {
   all: unset;
   font-family: "Cartograph CF";
 }
 
 .sideways_bar {
-  background-color: #1A1826;
+  background-color: $black2;
 }
 
+// =================================================================================================
+// TIME WIDGET
+// =================================================================================================
 .hour {
   font-size: 20px;
-  color: #96cdfb;
+  color: $blue;
 }
 
 .min {
   font-size: 20px;
-  color: #b5e8e0;
+  color: $red;
 }
 
-.spc1 {
-  font-size: 29px;
-}
-.spc1.active {
-  background-color: #ddb6f2;
-  color: #161320;
-}
-.spc1.inactive {
-  color: #ddb6f2;
+// =================================================================================================
+// CALENDAR WIDGET
+// =================================================================================================
+calendar {
+    background-color: $black;
 }
 
-.spc2 {
-  font-size: 29px;
-}
-.spc2.active {
-  background-color: #f5c2e7;
-  color: #161320;
-}
-.spc2.inactive {
-  color: #f5c2e7;
+calendar:selected {
+    color: $red;
 }
 
-.spc3 {
-  font-size: 29px;
-}
-.spc3.active {
-  background-color: #e8a2af;
-  color: #161320;
-}
-.spc3.inactive {
-  color: #e8a2af;
+calendar.header {
+    color: $blue;
 }
 
-.spc4 {
-  font-size: 29px;
-}
-.spc4.active {
-  background-color: #f28fad;
-  color: #161320;
-}
-.spc4.inactive {
-  color: #f28fad;
+calendar.button {
+    color: $green;
 }
 
-.spc5 {
-  font-size: 29px;
-}
-.spc5.active {
-  background-color: #f8bd96;
-  color: #161320;
-}
-.spc5.inactive {
-  color: #f8bd96;
+calendar.highlight {
+    color: $red;
+    font-weight: bold;
 }
 
-.spc6 {
-  font-size: 29px;
-}
-.spc6.active {
-  background-color: #fae3b0;
-  color: #161320;
-}
-.spc6.inactive {
-  color: #fae3b0;
+calendar:indeterminate {
+    color: $black;
 }
 
-.spc7 {
-  font-size: 29px;
-}
-.spc7.active {
-  background-color: #abe9b3;
-  color: #161320;
-}
-.spc7.inactive {
-  color: #abe9b3;
-}
-
-.spc8 {
-  font-size: 29px;
-}
-.spc8.active {
-  background-color: #b5e8e0;
-  color: #161320;
-}
-.spc8.inactive {
-  color: #b5e8e0;
-}
-
-.spc9 {
-  font-size: 29px;
-}
-.spc9.active {
-  background-color: #96cdfb;
-  color: #161320;
-}
-.spc9.inactive {
-  color: #96cdfb;
+// =================================================================================================
+// WORKSPACE WIDGET
+// =================================================================================================
+@for $i from 1 through 10 {
+    $main_color : black;
+    @if      $i == 1  {$main_color : $pink}
+    @else if $i == 2  {$main_color : $purple}
+    @else if $i == 3  {$main_color : $maroon}
+    @else if $i == 4  {$main_color : $red}
+    @else if $i == 5  {$main_color : $orange}
+    @else if $i == 6  {$main_color : $yellow}
+    @else if $i == 7  {$main_color : $green}
+    @else if $i == 8  {$main_color : $teal}
+    @else if $i == 9  {$main_color : $blue}
+    @else if $i == 10 {$main_color : $sky}
+    .spc#{$i} {
+        font-size: 29px;
+        border-radius: 50px;
+        &.active {
+            color: $black3;
+            background-color: $main_color;
+        }
+        &.inactive {
+            color: $main_color;
+            background-color: $black2;
+        }
+    }
 }
 
-.spc10 {
-  font-size: 29px;
-}
-.spc10.active {
-  background-color: #89dceb;
-  color: #161320;
-}
-.spc10.inactive {
-  color: #89dceb;
-}
-
-.padding {
-    background-color: $orange;
-}
-
+// =================================================================================================
+// RIGHT MENUS
+// =================================================================================================
 .powermenu {
   font-size: 29px;
 }
@@ -182,7 +135,7 @@ scale trough {
   all: unset;
   background-color: $red;
   border-radius: 5px;
-  min-height: 80px;
+  min-height: 25px;
   min-width: 15px;
   margin: .3rem 0 .3rem 0;
 }

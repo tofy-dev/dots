@@ -1,18 +1,11 @@
 ; ==================================================================================================
 ; Containers
 ; ==================================================================================================
-(defwidget x-boxes [num]
-  (box
-    :orientation "v"
-    (for n in num
-      (box (children :nth n))
-    )))
-
 (defwidget hover-cont [var varname ?transition ?duration]
   (box :class "revealer-on-container"
     (eventbox :class "eventbox"
-              :onhover "eww update ${varname}=${var ? false : true}"
-              :onhoverlost "eww update ${varname}=${var ? false : true}"
+              :onhover "eww update ${varname}=true"
+              :onhoverlost "eww update ${varname}=false"
       (revealer :reveal var 
                 :transition {transition ?: transition}
                 :duration {duration ?: duration}
@@ -23,17 +16,17 @@
 ; ==================================================================================================
 ; ----- Time ---------------------------------------------------------------------------------------
 (defwidget time []
-  (x-boxes
-    :num "[0, 1]"
-    :orientation "v"
+    (eventbox
+    :orientation "h"
+    :onhover "eww open calendar"
+    (box
+      :space-evenly "false"
+      :spacing 20
+      (box)
       (box :class "hour"
-           :valign "end"
-           :halign "center"
         hour)
       (box :class "min"
-           :valign "start"
-           :halign "center"
-        min)))
+        min))))
 
 (defpoll hour :interval "0.05s"
   `date | grep -o "..:..:.." | grep -o "..:.." | grep -o "[^:].." | tr -d ':'`)
@@ -42,9 +35,10 @@
 ; ----- Workspace ----------------------------------------------------------------------------------
 (defwidget workspaces[width]
   (box :class "workspaces"
-       :orientation "v"
+       :orientation "h"
        :halign "center"
-       :spacing 0
+       :valign "center"
+       :spacing 5
        :width width
     (button :class {(activeWorkspace == " 1 ") ? "spc1 active" : "spc1 inactive"} 
             :onclick "sway workspace 1" "")
@@ -74,9 +68,10 @@
 ; ----- Power --------------------------------------------------------------------------------------
 (defwidget power []
 	(eventbox	:onhover "eww update power=true" :onhoverlost "eww update power=false" 
-	(box		:orientation "v" :space-evenly "false" :vexpand "false" :valign "end" :class "powermenu"
-	(revealer	:transition "slideup" :reveal power	:duration "550ms"
-    (box		:orientation "v" :space-evenly "false"
+	(box		:orientation "h" :space-evenly "false" :vexpand "false" :valign "end" :class "powermenu" :spacing 20
+	(revealer	:transition "slideleft" :reveal power	:duration "550ms"
+    (box		:orientation "h" :space-evenly "false" :spacing 20
+          (box)
           (button   :class "button-reboot"  			
                     :tooltip "Restart" 
                     :onclick "reboot" "ﰇ" )
@@ -93,46 +88,45 @@
 ; ----- Volume -------------------------------------------------------------------------------------
 (defwidget volume []
   (eventbox :onhover "eww update volume=true" :onhoverlost "eww update volume=false"
-    (box :orientation "v" :space-evenly "false" :spacing 0 :class "volumemenu"
-    (revealer :transition "slideup" :reveal volume :duration "700ms"
+    (box :orientation "h" :space-evenly "false" :spacing 20 :class "volumemenu"
+    (revealer :transition "slideleft" :reveal volume :duration "700ms"
     (scale :class "bribar" 
            :value current-volume
            :tooltip "Volume: ${current-volume}%" 
            :onchange "amixer -M sset Master {}%" 
-           :flipped true :orientation "v" 
-           :height 125 :max 101 :min 0))
+           :flipped true :orientation "h" 
+           :height 10 :width 140 :max 101 :min 0))
       "")))
 (defvar volume false)
 (defpoll current-volume :interval "1s" `amixer | grep -E 'Front Left: Playback' | grep -oE '\[.*\]' | grep -oE "\[.*\ " | tr -d '\[\]\%'`)
 ; ----- Brightness ---------------------------------------------------------------------------------
 (defwidget bright []
   (eventbox :onhover "eww update bright=true" :onhoverlost "eww update bright=false"
-    (box :orientation "v" :space-evenly "false" :spacing 0 :class "brightmenu"
-    (revealer :transition "slideup" :reveal bright :duration "700ms"
+    (box :orientation "h" :space-evenly "false" :spacing 20 :class "brightmenu"
+    (revealer :transition "slideleft" :reveal bright :duration "700ms"
     (scale :class "bribar" 
            :value current-brightness 
            :tooltip "Brightness: ${current-brightness}%" 
            :onchange "brightnessctl set {}%" 
-           :flipped true :orientation "v" 
-           :height 125 :max 101 :min 0))
+           :flipped true :orientation "h" 
+           :height 10 :width 140 :max 101 :min 0))
       "")))
 (defvar bright false)
 (defpoll current-brightness :interval "1s" `brightnessctl -m -d amdgpu_bl0 | awk -F, '{print substr($4, 0, length($4)-1)}' | tr -d '%'`)
 ; ----- Sections -----------------------------------------------------------------------------------
 (defwidget top[]
-  (box :height 290
-    (time)))
+  (box :width 610
+    (box :halign "start" :width 300 (time))))
 (defwidget mid[]
-  (box :height 500
-    (workspaces :width 35)))
+  (box :width 700
+    (workspaces :width 400)))
 (defwidget bot[]
-  (box :height 290
-    :valign "end"
-    (box :orientation "v" :valign "end" :halign "center" :space-evenly false 
+  (box :width 610
+    (box :orientation "h" :valign "center" :halign "end" :space-evenly false :spacing 10
       (volume)
       (bright)
       (power)
-      (box :height 20)
+      (box)
     )))
 
 ; ==================================================================================================
@@ -142,24 +136,42 @@
     ; -----------------------properties-----------------------
     :monitor 0
     :geometry (geometry
-        :x "0%"
+        :x "0px"
         :y "0px"
-        :width "50px"
-        :height "100%"
-        :anchor "center left"
+        :width "100%"
+        :height "45px"
+        :anchor "center top"
     )
     :stacking "bottom"
-    :windowtype "normal"
-    :wm-ignore false 
-    :reserve (struts :distance "0px" :side "left")
     :exclusive true
 
     ; -----------------------widgets-----------------------
     (box
-      :orientation "v"
-      :valign "center"
+      :orientation "h"
+      :valign "top"
       :space-evenly false
       (top)
       (mid)
       (bot)
     ))
+
+(defwindow audio_player
+   :monitor 0
+   :geometry (geometry :x "155px"
+                       :y "0px"
+                       :width "300px"
+                       :height "50px"
+                       :anchor "top right")
+   :stacking "fg"
+   "test")
+
+(defwindow calendar 
+   :monitor 0
+   :geometry (geometry :x "0px"
+                       :y "0px"
+                       :width "300px"
+                       :height "50px"
+                       :anchor "top left")
+   :stacking "fg"
+   (eventbox :onhoverlost "eww close calendar"
+        (calendar)))
