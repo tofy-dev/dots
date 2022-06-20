@@ -96,14 +96,6 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # =================================================================================================
-# KEYMAP 
-# =================================================================================================
-input * {
-    # xkb_layout us 
-    # xkb_variant colemak_dh
-}
-
-# =================================================================================================
 # QOL KEYBINDS
 # =================================================================================================
 bindsym $mod+Return exec $term
@@ -123,6 +115,7 @@ client.unfocused                $unfocus_clr    $unfocus_clr    $focus_clr      
 
 set $opacity 1
 # for_window [app_id="Alacritty"] opacity $opacity
+gaps inner 10
 
 font Cartograph CF 14px
 output "*" bg ~/Visuals/Backgrounds/darker_unicat.png fill
@@ -132,10 +125,4 @@ output "*" bg ~/Visuals/Backgrounds/darker_unicat.png fill
 # =================================================================================================
 exec eww daemon
 exec eww open sideways_bar --debug
-# waybar --- no longer used
-# bar {
-#     position top
-#     swaybar_command waybar
-# }
-
 include /etc/sway/config.d/*

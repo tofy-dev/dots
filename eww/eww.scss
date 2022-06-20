@@ -42,34 +42,6 @@ $black3: #161320;
 }
 
 // =================================================================================================
-// CALENDAR WIDGET
-// =================================================================================================
-calendar {
-    background-color: $black;
-}
-
-calendar:selected {
-    color: $red;
-}
-
-calendar.header {
-    color: $blue;
-}
-
-calendar.button {
-    color: $green;
-}
-
-calendar.highlight {
-    color: $red;
-    font-weight: bold;
-}
-
-calendar:indeterminate {
-    color: $black;
-}
-
-// =================================================================================================
 // WORKSPACE WIDGET
 // =================================================================================================
 @for $i from 1 through 10 {
@@ -99,9 +71,70 @@ calendar:indeterminate {
 }
 
 // =================================================================================================
-// RIGHT MENUS
+// VOLUME/AUDIO
 // =================================================================================================
-.powermenu {
+.volume {
+    font-size: 29px;
+    color: $yellow;
+}
+
+.media-player {
+    background-color: $black3;
+}
+
+.player-title {
+    background-color: $black;
+    font-size: 25;
+    padding-left: 30;
+}
+
+.player-artist {
+    background-color: $black2;
+    font-size: 18;
+    padding-left: 30;
+    font-style: italic;
+}
+
+.player-bar trough {
+    min-height: 10px;
+    progress {
+        min-height: 10px;
+        background-color: $green;
+        border-radius: 5px;
+    }
+}
+
+.media-button {
+    background-color: $black3;
+    font-size: 20;
+    &.prev {
+        color: $purple;
+    }
+    &.pause {
+        color: $red;
+    }
+    &.skip {
+        color: $blue;
+    }
+}
+
+// =================================================================================================
+// BRIGHTNESS
+// =================================================================================================
+.bright-bar trough {
+  background-color: $red;
+  border-radius: 5px;
+  min-height: 25px;
+  min-width: 15px;
+  margin: .3rem 0 .3rem 0;
+}
+
+.bright-bar trough highlight {
+  background-color: $blue;
+  border-radius: 5px;
+}
+
+.power-menu {
   font-size: 29px;
 }
 
@@ -121,28 +154,29 @@ calendar:indeterminate {
     color: $red;
 }
 
-.brightmenu {
+.bright {
     font-size: 29px;
     color: $orange;
 }
 
-.volumemenu {
-    font-size: 29px;
-    color: $yellow;
+// =================================================================================================
+// CALENDAR WIDGET
+// =================================================================================================
+calendar {
+    background-color: $black;
+    &:selected {
+        color: $red;
+    }
+    &:indeterminate {
+        color: $black;
+    }
+    &.header {
+        color: $blue;
+    }
+    &.button {
+        color: $green;
+    }
+    &.highlight {
+        color: $red;
+    }
 }
-
-scale trough {
-  all: unset;
-  background-color: $red;
-  border-radius: 5px;
-  min-height: 25px;
-  min-width: 15px;
-  margin: .3rem 0 .3rem 0;
-}
-
-.bribar trough highlight {
-  background-color: $blue;
-  border-radius: 5px;
-}
-
-/*# sourceMappingURL=eww.css.map */

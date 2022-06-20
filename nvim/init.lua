@@ -20,15 +20,16 @@ set nobackup
 set undodir=~/.vim/undodir
 set undofile
 set incsearch
+set splitbelow
 
 set colorcolumn=100
 set clipboard+=unnamedplus
 
-let mapleader = " "
 let g:netrw_browse_split= 2
 let g:netrw_banner = 0
 let g:netrw_winsize = 25
 let g:ctrlp_use_caching= 0
+
 highlight ColorColumn guibg=#F5C2E7
 ]]
 

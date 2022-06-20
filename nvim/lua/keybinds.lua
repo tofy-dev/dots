@@ -1,3 +1,5 @@
+vim.g.mapleader = " "
+
 -- BASIC
 vim.api.nvim_set_keymap('n', '<leader>h', ':wincmd h<CR>', { noremap = true, silent = true, nowait = true })
 vim.api.nvim_set_keymap('n', '<leader>j', ':wincmd j<CR>', { noremap = true, silent = true, nowait = true })
@@ -5,10 +7,7 @@ vim.api.nvim_set_keymap('n', '<leader>k', ':wincmd k<CR>', { noremap = true, sil
 vim.api.nvim_set_keymap('n', '<leader>l', ':wincmd l<CR>', { noremap = true, silent = true, nowait = true })
 
 vim.api.nvim_set_keymap('n', '<leader>u', ':UndotreeShow<CR>', { noremap = true, silent = true, nowait = true })
-vim.api.nvim_set_keymap('n', '<leader><enter>', ':split term://zsh<CR>', { noremap = true, silent = true, nowait = true })
-
-vim.api.nvim_set_keymap('n', '<leader><enter>', ':split term://zsh<CR>', { noremap = true, silent = true, nowait = true })
-vim.api.nvim_set_keymap('n', '<leader><enter>', ':split term://zsh<CR>', { noremap = true, silent = true, nowait = true })
+vim.api.nvim_set_keymap('n', '<leader><enter>', ':10split term://zsh<CR>', { noremap = true, silent = true, nowait = true })
 
 -- NVIM TREE
 vim.api.nvim_set_keymap('n', '<leader><tab>', ':NvimTreeToggle<CR>', { noremap = true, silent = true, nowait = true })
@@ -33,7 +32,7 @@ vim.api.nvim_set_keymap('n', '<leader>9', ':BufferGoto 9<CR>', { noremap = true,
 vim.api.nvim_set_keymap('n', '<leader>0', ':BufferGoto 0<CR>', { noremap = true, silent = true, nowait = true })
 
 vim.api.nvim_set_keymap('n', '<leader>p', ':BufferPin<CR>', { noremap = true, silent = true, nowait = true })
-vim.api.nvim_set_keymap('n', '<leader>c', ':BufferClose<CR>', { noremap = true, silent = true, nowait = true })
+vim.api.nvim_set_keymap('n', '<leader>w', ':BufferClose<CR>', { noremap = true, silent = true, nowait = true })
 vim.api.nvim_set_keymap('n', '<leader>t', ':tabnew<CR>', { noremap = true, silent = true, nowait = true })
 
 vim.api.nvim_set_keymap('n', '<Space>bb', ':BufferOrderByBufferNumber<CR>', { noremap = true, silent = true, nowait = true })

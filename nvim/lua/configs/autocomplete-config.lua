@@ -29,7 +29,10 @@ sources = cmp.config.sources({
   -- { name = 'snippy' }, -- For snippy users.
 }, {
   { name = 'buffer' },
-})
+}),
+completion = {
+  completeopt = 'menu,menuone,noinsert'
+}
 })
 
 -- Set configuration for specific filetype.

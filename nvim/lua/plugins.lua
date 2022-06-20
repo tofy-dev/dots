@@ -20,8 +20,8 @@ return require('packer').startup(function()
   -- language support
   -- ==============================================================================================
   use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
-  use 'dense-analysis/ale'
   use 'lervag/vimtex'
+  use 'elkowar/yuck.vim'
 
   -- ==============================================================================================
   -- autocomplete 
@@ -40,7 +40,7 @@ return require('packer').startup(function()
   -- ==============================================================================================
   use 'sainnhe/everforest'
   use 'sainnhe/sonokai'
-  use 'joshdick/onedark.vim'
+  use 'sainnhe/gruvbox-material'
   use 'franbach/miramare'
   use {'catppuccin/nvim', as = 'catppuccin'}
 

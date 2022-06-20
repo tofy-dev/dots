@@ -17,7 +17,6 @@
 ; ----- Time ---------------------------------------------------------------------------------------
 (defwidget time []
     (eventbox
-    :orientation "h"
     :onhover "eww open calendar"
     (box
       :space-evenly "false"
@@ -32,6 +31,8 @@
   `date | grep -o "..:..:.." | grep -o "..:.." | grep -o "[^:].." | tr -d ':'`)
 (defpoll min :interval "0.05s"
   `date | grep -o "..:..:.." | grep -o "..:.." | grep -o ":.." | tr -d ':'`)
+; ----- Time ---------------------------------------------------------------------------------------
+
 ; ----- Workspace ----------------------------------------------------------------------------------
 (defwidget workspaces[width]
   (box :class "workspaces"
@@ -40,35 +41,102 @@
        :valign "center"
        :spacing 5
        :width width
-    (button :class {(activeWorkspace == " 1 ") ? "spc1 active" : "spc1 inactive"} 
+    (button :class {(active-workspace == " 1 ") ? "spc1 active" : "spc1 inactive"} 
             :onclick "sway workspace 1" "")
-    (button :class {(activeWorkspace == " 2 ") ? "spc2 active" : "spc2 inactive"} 
+    (button :class {(active-workspace == " 2 ") ? "spc2 active" : "spc2 inactive"} 
             :onclick "sway workspace 2" "")
-    (button :class {(activeWorkspace == " 3 ") ? "spc3 active" : "spc3 inactive"} 
+    (button :class {(active-workspace == " 3 ") ? "spc3 active" : "spc3 inactive"} 
             :onclick "sway workspace 3" "")
-    (button :class {(activeWorkspace == " 4 ") ? "spc4 active" : "spc4 inactive"} 
+    (button :class {(active-workspace == " 4 ") ? "spc4 active" : "spc4 inactive"} 
             :onclick "sway workspace 4" "")
-    (button :class {(activeWorkspace == " 5 ") ? "spc5 active" : "spc5 inactive"} 
+    (button :class {(active-workspace == " 5 ") ? "spc5 active" : "spc5 inactive"} 
             :onclick "sway workspace 5" "")
-    (button :class {(activeWorkspace == " 6 ") ? "spc6 active" : "spc6 inactive"} 
+    (button :class {(active-workspace == " 6 ") ? "spc6 active" : "spc6 inactive"} 
             :onclick "sway workspace 6" "")
-    (button :class {(activeWorkspace == " 7 ") ? "spc7 active" : "spc7 inactive"} 
+    (button :class {(active-workspace == " 7 ") ? "spc7 active" : "spc7 inactive"} 
             :onclick "sway workspace 7" "")
-    (button :class {(activeWorkspace == " 8 ") ? "spc8 active" : "spc8 inactive"} 
+    (button :class {(active-workspace == " 8 ") ? "spc8 active" : "spc8 inactive"} 
             :onclick "sway workspace 8" "")
-    (button :class {(activeWorkspace == " 9 ") ? "spc9 active" : "spc9 inactive"} 
+    (button :class {(active-workspace == " 9 ") ? "spc9 active" : "spc9 inactive"} 
             :onclick "sway workspace 9" "")
-    (button :class {(activeWorkspace == " 10 ") ? "spc10 active" : "spc10 inactive"} 
+    (button :class {(active-workspace == " 10 ") ? "spc10 active" : "spc10 inactive"} 
             :onclick "sway workspace 10" "")))
 
-(defpoll activeWorkspace :interval "0.05s" :initial 1
+(defpoll active-workspace :interval "0.05s" :initial 1
   `swaymsg -t get_tree | grep '"current_workspace": "' | grep -oE '".0?"' | tr '\"' ' '`)
-(defpoll openWorkspaces :interval "0.05s" :initial false
-  `swaymsg -t get_workspaces | grep "name" | grep -oE '".0?"' | tr '\"' ' '`)
+; ----- Workspace ----------------------------------------------------------------------------------
+
+; ----- Volume -------------------------------------------------------------------------------------
+(defwidget volume []
+  (eventbox :onhover `eww update volume=true && eww open media-player`
+            :onhoverlost "eww update volume=false"
+    (box :orientation "h" :space-evenly "false" :spacing 20 :class "volume"
+    (revealer :transition "slideleft" :reveal volume :duration "700ms"
+    (scale :class "bright-bar" 
+           :tooltip "Volume: ${current-volume}%" 
+           :onchange "amixer -M sset Master {}%" 
+           :flipped false :orientation "h" 
+           :height 10 :width 140 :max 101 :min 0))
+      "${player-image}")))
+(defvar volume false)
+(defpoll current-volume :interval "1s" `amixer | grep -E 'Front Left: Playback' | grep -oE '\[.*\]' | grep -oE "\[.*\ " | tr -d '\[\]\%'`)
+; ----- Volume -------------------------------------------------------------------------------------
+
+; ----- Audio Player -------------------------------------------------------------------------------
+(defwidget media-player [width]
+    (box :class "media-player" :orientation "v" :valign "fill" :space-evenly false
+      (box :space-evenly false :orientation "h" :height 150
+          (image :class "player-image"
+              :valign "start"
+              :image-width 150
+              :image-height 150
+              :path "./scripts/get_image/img")
+          (box :orientation "v" :width width
+            (label
+                :class "player-title"
+                :text player-title
+                :xalign 0
+                )
+            (label
+                :class "player-artist"
+                :text player-artist
+                :xalign 0
+                )))
+      (progress :value player-position :class "player-bar" :orientation "h")
+      (media-buttons :height 30)))
+(deflisten player-title `playerctl --player playerctld --follow metadata --format {{title}}`)
+(deflisten player-artist `playerctl --player playerctld --follow metadata --format {{artist}}`)
+(defpoll player-position :interval "0.1s" `playerctl metadata --format "{{ position/mpris:length*100 }}"`)
+(defpoll player-image :interval "0.5s" `~/.config/eww/scripts/get_image/get_image.sh`)
+
+(defwidget media-buttons [height]
+  (box :valign "fill" :height height
+    (button :timeout "3s" :class "media-button prev" :onclick "playerctl previous && ${refresh-media}" "玲")
+    (button :timeout "3s" :class "media-button pause" :onclick "playerctl play-pause" "")
+    (button :timeout "3s" :class "media-button skip" :onclick "playerctl next && ${refresh-media}" "怜")))
+(defvar refresh-media `eww close media-player && ~/.config/eww/scripts/get_image/get_image.sh && sleep 1 && eww open media-player`)
+; ----- Audio Player -------------------------------------------------------------------------------
+
+; ----- Brightness ---------------------------------------------------------------------------------
+(defwidget bright []
+  (eventbox :onhover "eww update bright=true" :onhoverlost "eww update bright=false"
+    (box :orientation "h" :space-evenly "false" :spacing 20 :class "bright"
+    (revealer :transition "slideleft" :reveal bright :duration "700ms"
+    (scale :class "bright-bar" 
+           :value current-brightness 
+           :tooltip "Brightness: ${current-brightness}%" 
+           :onchange "brightnessctl set {}%" 
+           :flipped false :orientation "h" 
+           :height 10 :width 140 :max 101 :min 0))
+      "")))
+(defvar bright false)
+(defpoll current-brightness :interval "1s" `brightnessctl -m -d amdgpu_bl0 | awk -F, '{print substr($4, 0, length($4)-1)}' | tr -d '%'`)
+; ----- Brightness ---------------------------------------------------------------------------------
+
 ; ----- Power --------------------------------------------------------------------------------------
 (defwidget power []
 	(eventbox	:onhover "eww update power=true" :onhoverlost "eww update power=false" 
-	(box		:orientation "h" :space-evenly "false" :vexpand "false" :valign "end" :class "powermenu" :spacing 20
+	(box		:orientation "h" :space-evenly "false" :vexpand "false" :valign "end" :class "power-menu" :spacing 20
 	(revealer	:transition "slideleft" :reveal power	:duration "550ms"
     (box		:orientation "h" :space-evenly "false" :spacing 20
           (box)
@@ -85,34 +153,8 @@
                     :tooltip "Shutdown"		 
                     :onclick "poweroff" ""))))
 (defvar power false)
-; ----- Volume -------------------------------------------------------------------------------------
-(defwidget volume []
-  (eventbox :onhover "eww update volume=true" :onhoverlost "eww update volume=false"
-    (box :orientation "h" :space-evenly "false" :spacing 20 :class "volumemenu"
-    (revealer :transition "slideleft" :reveal volume :duration "700ms"
-    (scale :class "bribar" 
-           :value current-volume
-           :tooltip "Volume: ${current-volume}%" 
-           :onchange "amixer -M sset Master {}%" 
-           :flipped true :orientation "h" 
-           :height 10 :width 140 :max 101 :min 0))
-      "")))
-(defvar volume false)
-(defpoll current-volume :interval "1s" `amixer | grep -E 'Front Left: Playback' | grep -oE '\[.*\]' | grep -oE "\[.*\ " | tr -d '\[\]\%'`)
-; ----- Brightness ---------------------------------------------------------------------------------
-(defwidget bright []
-  (eventbox :onhover "eww update bright=true" :onhoverlost "eww update bright=false"
-    (box :orientation "h" :space-evenly "false" :spacing 20 :class "brightmenu"
-    (revealer :transition "slideleft" :reveal bright :duration "700ms"
-    (scale :class "bribar" 
-           :value current-brightness 
-           :tooltip "Brightness: ${current-brightness}%" 
-           :onchange "brightnessctl set {}%" 
-           :flipped true :orientation "h" 
-           :height 10 :width 140 :max 101 :min 0))
-      "")))
-(defvar bright false)
-(defpoll current-brightness :interval "1s" `brightnessctl -m -d amdgpu_bl0 | awk -F, '{print substr($4, 0, length($4)-1)}' | tr -d '%'`)
+; ----- Power --------------------------------------------------------------------------------------
+
 ; ----- Sections -----------------------------------------------------------------------------------
 (defwidget top[]
   (box :width 610
@@ -128,6 +170,7 @@
       (power)
       (box)
     )))
+; ----- Sections -----------------------------------------------------------------------------------
 
 ; ==================================================================================================
 ; Windows 
@@ -155,16 +198,6 @@
       (bot)
     ))
 
-(defwindow audio_player
-   :monitor 0
-   :geometry (geometry :x "155px"
-                       :y "0px"
-                       :width "300px"
-                       :height "50px"
-                       :anchor "top right")
-   :stacking "fg"
-   "test")
-
 (defwindow calendar 
    :monitor 0
    :geometry (geometry :x "0px"
@@ -175,3 +208,14 @@
    :stacking "fg"
    (eventbox :onhoverlost "eww close calendar"
         (calendar)))
+
+(defwindow media-player
+   :monitor 0
+   :geometry (geometry :x "0px"
+                       :y "0px"
+                       :width "400px"
+                       :height "150px"
+                       :anchor "top right")
+   :stacking "fg"
+   (eventbox :onhover "eww open media-player" :onhoverlost "eww close media-player"
+        (media-player :width 400)))
