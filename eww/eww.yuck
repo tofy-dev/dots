@@ -21,7 +21,7 @@
     (box
       :space-evenly "false"
       :spacing 20
-      (box)
+(box)
       (box :class "hour"
         hour)
       (box :class "min"
@@ -90,10 +90,11 @@
               :valign "start"
               :image-width 150
               :image-height 150
-              :path "./scripts/get_image/img")
+              :path image-path)
           (box :orientation "v" :width width
             (label
                 :class "player-title"
+                :limit-width 21
                 :text player-title
                 :xalign 0
                 )
@@ -104,6 +105,7 @@
                 )))
       (progress :value player-position :class "player-bar" :orientation "h")
       (media-buttons :height 30)))
+(defvar image-path "./scripts/get_image/img")
 (deflisten player-title `playerctl --player playerctld --follow metadata --format {{title}}`)
 (deflisten player-artist `playerctl --player playerctld --follow metadata --format {{artist}}`)
 (defpoll player-position :interval "0.1s" `playerctl metadata --format "{{ position/mpris:length*100 }}"`)
@@ -114,7 +116,7 @@
     (button :timeout "3s" :class "media-button prev" :onclick "playerctl previous && ${refresh-media}" "玲")
     (button :timeout "3s" :class "media-button pause" :onclick "playerctl play-pause" "")
     (button :timeout "3s" :class "media-button skip" :onclick "playerctl next && ${refresh-media}" "怜")))
-(defvar refresh-media `eww close media-player && ~/.config/eww/scripts/get_image/get_image.sh && sleep 1 && eww open media-player`)
+(defvar refresh-media `eww close media-player && ~/.config/eww/scripts/get_image/get_image.sh && eww open media-player`)
 ; ----- Audio Player -------------------------------------------------------------------------------
 
 ; ----- Brightness ---------------------------------------------------------------------------------
