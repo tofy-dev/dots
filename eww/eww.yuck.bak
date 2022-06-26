@@ -10,11 +10,6 @@
                 :transition {transition ?: transition}
                 :duration {duration ?: duration}
         (children)))))
-(defwidget grid [rows cols]
-  (box
-    (for row in rows
-      (for col in cols
-        (box)))))
 
 ; ==================================================================================================
 ; Widgets

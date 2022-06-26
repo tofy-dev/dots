@@ -28,6 +28,9 @@ $black3: #161320;
   background-color: $black2;
 }
 
+.icon {
+}
+
 // =================================================================================================
 // TIME WIDGET
 // =================================================================================================
@@ -75,11 +78,17 @@ $black3: #161320;
 // =================================================================================================
 .volume {
     font-size: 29px;
-    color: $yellow;
+    color: $orange;
 }
 
 .media-player {
     background-color: $black3;
+}
+
+.pin-media-player {
+    font-size: 30px;
+    margin-right: 10px;
+    color: $yellow;
 }
 
 .player-title {
@@ -119,14 +128,14 @@ $black3: #161320;
 }
 
 // =================================================================================================
-// BRIGHTNESS
+// BRIGHTNESS + POWERMENU
 // =================================================================================================
 .bright-bar trough {
-  background-color: $red;
-  border-radius: 5px;
-  min-height: 25px;
-  min-width: 15px;
-  margin: .3rem 0 .3rem 0;
+    background-color: $red;
+    border-radius: 5px;
+    min-height: 12px;
+    min-width: 15px;
+    margin-right: 20px;
 }
 
 .bright-bar trough highlight {
@@ -134,29 +143,29 @@ $black3: #161320;
   border-radius: 5px;
 }
 
+.bright {
+    font-size: 29px;
+    color: $maroon;
+}
+
 .power-menu {
   font-size: 29px;
 }
 
-.button-reboot {
-    color: $green;
-}
-
-.button-logout {
-    color: $blue;
-}
-
-.button-lock {
-    color: $purple;
-}
-
-.button-off {
-    color: $red;
-}
-
-.bright {
-    font-size: 29px;
-    color: $orange;
+.power-button {
+    margin-right: 10px;
+    &.reboot {
+        color: $green;
+    }
+    &.logout {
+        color: $blue;
+    }
+    &.lock {
+        color: $purple;
+    }
+    &.off {
+        color: $red;
+    }
 }
 
 // =================================================================================================
