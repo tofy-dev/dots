@@ -14,12 +14,11 @@ then
         cp ${image_link} ${DIR}/img
         magick ${DIR}/img -gravity center -crop 150x150+0+0 +repage ${DIR}/img
     fi
+    # update last image
+    rm ${DIR}/prev_img.txt
+    echo ${image_link} >> ${DIR}/prev_img.txt;
+
+    # modify path in eww
+    eww update image-path="./scripts/get_image/"
+    eww update image-path="./scripts/get_image/img"
 fi
-
-# update last image
-rm ${DIR}/prev_img.txt
-echo ${image_link} >> ${DIR}/prev_img.txt;
-
-# modify path in eww
-eww update image-path="./scripts/get_image/"
-eww update image-path="./scripts/get_image/img"

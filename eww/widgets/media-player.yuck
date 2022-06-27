@@ -1,0 +1,35 @@
+(defwidget media-player [height width]
+    (box :class "media-player" :orientation "v" :space-evenly false 
+         :height height :width width :halign "center"
+        (image :class "player-image"
+            :valign "start"
+            :image-width 300
+            :image-height 300
+            :path image-path)
+        (label
+            :class "player-title"
+            :text "${player-title}${player-image}"
+            :limit-width 20
+            :xalign 0.5
+            :height 30)
+        (label
+            :class "player-artist"
+            :text player-artist
+            :height 30
+            :xalign 0.5
+            :height 30)
+        (box :vexpand true)
+        (media-buttons :height 50)
+        (progress :value player-position :class "player-bar" :orientation "h" :valign "end")))
+(defvar image-path "./scripts/get_image/img")
+(deflisten player-title `playerctl --player playerctld --follow metadata --format {{title}}`)
+(deflisten player-artist `playerctl --player playerctld --follow metadata --format {{artist}}`)
+(defpoll player-position :interval "0.1s" `playerctl metadata --format "{{ position/mpris:length*100 }}"`)
+(defpoll player-image :interval "0.5s" `~/.config/eww/scripts/get_image/get_image.sh`)
+
+(defwidget media-buttons [height]
+  (box :height height
+    (button :timeout "3s" :onclick "playerctl previous" (label :class "media-button prev" :yalign 0.5 :text "玲"))
+    (button :timeout "3s" :onclick "playerctl play-pause && eww update play-pause='${play-pause == "" ? "" : ""}'" (label :class "media-button play-pause" :yalign 0.5 :text play-pause))
+    (button :timeout "3s" :onclick "playerctl next" (label :class "media-button skip" :yalign 0.5 :text "怜"))))
+(defvar play-pause "")
