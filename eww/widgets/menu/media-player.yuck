@@ -21,7 +21,7 @@
         (box :vexpand true)
         (media-buttons :height 50)
         (progress :value player-position :class "player-bar" :orientation "h" :valign "end")))
-(defvar image-path "./scripts/get_image/img")
+(defvar image-path "../../images/album")
 (defpoll player-title :interval "0.5s"`playerctl --player playerctld metadata --format {{title}}`)
 (defpoll player-artist :interval "0.5s" `playerctl --player playerctld metadata --format {{artist}}`)
 (defpoll player-position :interval "0.1s" `playerctl metadata --format "{{ position/mpris:length*100 }}"`)

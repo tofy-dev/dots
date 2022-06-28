@@ -1,0 +1,33 @@
+(include "../../widgets/containers.yuck")
+(include "../../widgets/menu/media-player.yuck")
+(include "../../widgets/menu/profile.yuck")
+(include "../../widgets/menu/search-bar.yuck")
+(include "../../widgets/menu/time.yuck")
+(include "../../widgets/menu/todo-list.yuck")
+(include "../../widgets/menu/weather.yuck")
+
+(defwindow menu
+    :geometry (geometry :x "0px" :y "0px" :width "0px" :height "0px" :anchor "center")
+    :stacking "overlay" :exclusive true :focusable true :monitor 0
+
+    (hgrid :columns "[\"[0, 1]\", \"[2, 3]\"]" :spacing 40
+      (hgrid :columns "[\"[0]\", \"[1]\"]" :spacing 40
+        (profile :height 400 :width 300)
+        (vgrid :rows "[\"[0]\", \"[1, 2]\"]" :spacing 40
+          (todo-list :height 200 :width 600)
+          (label :text "Progress is man's ability to complicate simplicity." :class "quote"
+                 :wrap true :xalign 0.5 :height 150 :width 280)
+          (weather :height 150 :width 280)))
+      (search-bar :height 100 :width 740)
+
+      (time :height 100 :width 410)
+      (hgrid :columns "[\"[0]\", \"[1, 2, 3, 4]\"]" :spacing 40
+        (media-player :height 400 :width 300)
+        (eventbox :onclick "discord &" :timeout "5000" :class "shortcut discord" :height 70 :width 70
+          (label :xalign 0.40 :text "ﭮ"))
+        (eventbox :onclick "xdg-open 'https://www.youtube.com'" :class "shortcut youtube" :height 70 :width 70
+          (label :xalign 0.30 :text ""))
+        (eventbox :onclick "xdg-open 'https://www.usaco.guide'" :class "shortcut usaco" :height 70 :width 70
+          (label :xalign 0.43 :text ""))
+        (eventbox :onclick "~/Coding/scripts/spotify-adblock.sh &" :timeout "5000ms" :class "shortcut spotify" :height 70 :width 70
+          (label :xalign 0.35 :text "")))))

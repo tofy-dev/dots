@@ -1,0 +1,245 @@
+// =================================================================================================
+// COLORS 
+// =================================================================================================
+$red: #f28fad;
+$orange: #f8bd96;
+$yellow: #fae3b0;
+$green: #abe9b3;
+$teal: #b5e8e0;
+$blue: #96cdfb;
+$sky: #89dceb;
+$purple: #ddb6f2;
+$pink: #f5c2e7;
+$maroon: #e8a2af;
+
+$black: #1E1E2E;
+$black2: #1A1826;
+$black3: #161320;
+$rosewater: #f2d5cf;
+
+// =================================================================================================
+// GLOBAL BAR STUFF
+// =================================================================================================
+* {
+    all: unset;
+    font-family: "Cartograph CF", "JetBrains Mono Nerd Font";
+}
+
+// =================================================================================================
+// PROFILE
+// =================================================================================================
+.profile {
+    background-color: $black;
+    border-radius: 20px;
+}
+
+.profile-name {
+    color: $sky;
+    font-size: 30px;
+}
+
+.status-preface {
+    color: $purple;
+    padding-bottom: 30px;
+    padding-top: 30px;
+}
+
+.status-input {
+    color: $pink;
+    padding: 30px 10px 30px 0px;
+}
+
+// =================================================================================================
+// TODO LIST
+// =================================================================================================
+.todo-list {
+    background-color: $black;
+    border-radius: 20px;
+    padding: 5px;
+}
+
+.todo-title {
+    font-size: 30px;
+    background: $blue;
+    color: $black;
+    border-radius: 20px;
+}
+
+.todo-item {
+    background-color: $black3;
+    margin: 3px;
+    border-radius: 20px;
+    &.todo1 { color: $maroon }
+    &.todo2 { color: $orange}
+    &.todo3 { color: $yellow}
+    &.todo4 { color: $green}
+    &.todo5 { color: $teal}
+}
+
+.todo-check {
+    font-size: 20px;
+    padding: 0px 5px 0px 5px;
+    &:hover {
+        color: $green;
+    }
+}
+// =================================================================================================
+// QUOTE
+// =================================================================================================
+.quote {
+    background-color: $black;
+    border-radius: 20px;
+    padding: 0px 10px 0px 10px;
+    font-style: italic;
+    font-size: 27px;
+}
+
+// =================================================================================================
+// WEATHER
+// =================================================================================================
+.weather {
+    background-color: $black;
+    border-radius: 20px;
+}
+
+.weather-icon {
+    font-size: 70px;
+    color: $orange;
+}
+
+.weather-city {
+    font-size: 20px;
+    color: $teal;
+}
+
+.weather-temp {
+    font-size: 30px;
+    color: $sky;
+}
+
+// =================================================================================================
+// SEARCH BAR
+// =================================================================================================
+.search-bar {
+    background-color: $black;
+    border-radius: 20px;
+}
+
+.search-inner {
+    background-color: $black3;
+    margin: 20px;
+    border-radius: 20px;
+}
+
+.search-preface {
+    padding-left: 10px;
+}
+
+.search-input {
+    padding-left: 10px;
+    color: $red;
+}
+
+.search-icon {
+    padding-right: 20px;
+    padding-left: 10px;
+    color: $red;
+}
+
+// =================================================================================================
+// MEDIA PLAYER
+// =================================================================================================
+.media-player {
+    background-color: $black;
+    border-radius: 20px;
+}
+
+.player-image {
+    padding-top: 30px;
+}
+
+.player-title {
+    font-size: 23px;
+    padding-top: 20px;
+}
+
+.player-artist {
+    font-size: 15px;
+}
+
+.player-bar trough {
+    min-height: 10px;
+    progress {
+        min-height: 10px;
+        background-color: $green;
+        border-radius: 5px;
+    }
+}
+
+.media-button {
+    font-size: 20px;
+    background-color: $black3;
+    &.prev {
+        color: $blue;
+    }
+    &.play-pause {
+        color: $purple;
+    }
+    &.skip {
+        color: $red;
+    }
+}
+
+// =================================================================================================
+// TIME & CALENDAR
+// =================================================================================================
+.time {
+    background-color: $black;
+    border-radius: 20px;
+    font-size: 30px;
+}
+
+calendar {
+    background-color: $black;
+    color: $rosewater;
+    font-size: 16px;
+    border-radius: 20px;
+
+    &.header {
+        color: $red;
+        margin-top: 10px;
+    }
+    &.button {
+        color: $red;
+    }
+    &.highlight {
+        color: $red;
+    }
+    &:selected {
+        color: $red;
+    }
+    &:indeterminate {
+        color: $black;
+    }
+}
+
+// =================================================================================================
+// SHORTCUTS
+// =================================================================================================
+.shortcut {
+    font-size: 45px;
+    border-radius: 20px;
+    color: $black;
+    &.spotify {
+        background-color: $green;
+    }
+    &.usaco {
+        background-color: $purple;
+    }
+    &.youtube {
+        background-color: $red;
+    }
+    &.discord {
+        background-color: $blue;
+    }
+}

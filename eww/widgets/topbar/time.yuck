@@ -1,0 +1,15 @@
+(defwidget bar-time []
+    (eventbox
+    :onhover "eww open calendar"
+    (box
+      :space-evenly "false"
+      :spacing 20
+      (box :class "hour bar"
+        hour)
+      (box :class "min bar"
+        min))))
+
+(defpoll hour :interval "0.05s"
+  `date | grep -o "..:..:.." | grep -o "..:.." | grep -o "[^:].." | tr -d ':'`)
+(defpoll min :interval "0.05s"
+  `date | grep -o "..:..:.." | grep -o "..:.." | grep -o ":.." | tr -d ':'`)

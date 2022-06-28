@@ -1,9 +1,9 @@
-(include "./widgets/containers.yuck")
-(include "./widgets/topbar/time.yuck")
-(include "./widgets/topbar/volume.yuck")
-(include "./widgets/topbar/workspaces.yuck")
-(include "./widgets/topbar/bright.yuck")
-(include "./widgets/topbar/power.yuck")
+(include "../../widgets/containers.yuck")
+(include "../../widgets/topbar/time.yuck")
+(include "../../widgets/topbar/volume.yuck")
+(include "../../widgets/topbar/workspaces.yuck")
+(include "../../widgets/topbar/bright.yuck")
+(include "../../widgets/topbar/power.yuck")
 
 (defwindow topbar
   :geometry (geometry :x "0px" :y "0px" :width "100%" :height "45px" :anchor "center top")

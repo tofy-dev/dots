@@ -1,0 +1,19 @@
+(defwidget power []
+	(eventbox	:onhover "eww update power=true" :onhoverlost "eww update power=false" 
+	(box		:orientation "h" :space-evenly "false" :vexpand "false" :valign "end" :class "power-menu"
+	(revealer	:transition "slideleft" :reveal power	:duration "550ms"
+    (box		:orientation "h" :space-evenly "false"
+          (box)
+          (button   :class "power-button reboot"  			
+                    :tooltip "Restart" 
+                    :onclick "reboot" "ﰇ" )
+          (button	:class "power-button logout"					
+                    :tooltip "Logoff"		 
+                    :onclick "swaymsg exit"	"")
+          (button	:class "power-button lock" 				
+                    :tooltip "Lock Screen"
+                    :onclick "~/Coding/scripts/lockscreen.sh" "")))
+          (button	:class "power-button off"					
+                    :tooltip "Shutdown"		 
+                    :onclick "poweroff" ""))))
+(defvar power false)

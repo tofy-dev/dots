@@ -1,0 +1,14 @@
+; Horizontally aligned grid (items can stretch vertically)
+(defwidget hgrid [columns spacing]
+  (box :orientation "h" :space-evenly false :spacing spacing  
+    (for col in columns 
+      (box :orientation "v" :space-evenly false :spacing spacing ; this acts as a column
+        (for row in col
+          (box (children :nth row)))))))
+; Vertically aligned grid (items can stretch horizontally)
+(defwidget vgrid [rows spacing]
+  (box :orientation "v" :space-evenly false :spacing spacing  
+    (for row in rows
+      (box :orientation "h" :space-evenly false :spacing spacing ; this acts as a row
+        (for col in row
+          (box (children :nth col)))))))

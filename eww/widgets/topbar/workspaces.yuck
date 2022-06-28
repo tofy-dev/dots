@@ -1,0 +1,30 @@
+(defwidget workspaces[width]
+  (box :class "workspaces"
+       :orientation "h"
+       :halign "center"
+       :valign "center"
+       :spacing 5
+       :width width
+    (button :class {(active-workspace == " 1 ") ? "spc1 active" : "spc1 inactive"} 
+            :onclick "sway workspace 1" "")
+    (button :class {(active-workspace == " 2 ") ? "spc2 active" : "spc2 inactive"} 
+            :onclick "sway workspace 2" "")
+    (button :class {(active-workspace == " 3 ") ? "spc3 active" : "spc3 inactive"} 
+            :onclick "sway workspace 3" "")
+    (button :class {(active-workspace == " 4 ") ? "spc4 active" : "spc4 inactive"} 
+            :onclick "sway workspace 4" "")
+    (button :class {(active-workspace == " 5 ") ? "spc5 active" : "spc5 inactive"} 
+            :onclick "sway workspace 5" "")
+    (button :class {(active-workspace == " 6 ") ? "spc6 active" : "spc6 inactive"} 
+            :onclick "sway workspace 6" "")
+    (button :class {(active-workspace == " 7 ") ? "spc7 active" : "spc7 inactive"} 
+            :onclick "sway workspace 7" "")
+    (button :class {(active-workspace == " 8 ") ? "spc8 active" : "spc8 inactive"} 
+            :onclick "sway workspace 8" "")
+    (button :class {(active-workspace == " 9 ") ? "spc9 active" : "spc9 inactive"} 
+            :onclick "sway workspace 9" "")
+    (button :class {(active-workspace == " 10 ") ? "spc10 active" : "spc10 inactive"} 
+            :onclick "sway workspace 10" "")))
+
+(defpoll active-workspace :interval "0.05s" :initial 1
+  `swaymsg -t get_tree | grep '"current_workspace": "' | grep -oE '".0?"' | tr '\"' ' '`)
