@@ -10,7 +10,3 @@ done
 rm /tmp/how-im-feeling
 touch /tmp/how-im-feeling
 echo >> /tmp/how-im-feeling
-
-# init weather
-rm /tmp/weather
-touch /tmp/weather
