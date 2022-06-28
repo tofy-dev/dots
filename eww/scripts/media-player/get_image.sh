@@ -20,6 +20,6 @@ then
     echo ${image_link} >> ${DIR}/prev_img.txt;
 
     # modify path in eww
-    eww update image-path="${IMG}"
-    eww update image-path="${IMG}/album"
+    eww --config ~/.config/eww/windows/menu update image-path="${IMG}"
+    eww --config ~/.config/eww/windows/menu update image-path="${IMG}/album"
 fi

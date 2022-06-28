@@ -3,7 +3,6 @@
 	(box		:orientation "h" :space-evenly "false" :vexpand "false" :valign "end" :class "power-menu"
 	(revealer	:transition "slideleft" :reveal power	:duration "550ms"
     (box		:orientation "h" :space-evenly "false"
-          (box)
           (button   :class "power-button reboot"  			
                     :tooltip "Restart" 
                     :onclick "reboot" "ﰇ" )

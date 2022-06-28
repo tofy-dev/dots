@@ -2,7 +2,7 @@
   (box :class "profile" :width width :height height :orientation "v" :space-evenly false
     (image :class "profile-image"
         :image-width 200 :image-height 200 :vexpand "true"
-        :path "./images/samoyed.gif")
+        :path "../../images/samoyed.gif")
     (label :class "profile-name" :text "tofy")
     (box
       (label :class "status-preface" :text "I'm feeling " :halign "end" :width 10)

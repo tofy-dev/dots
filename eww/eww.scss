@@ -15,156 +15,94 @@ $maroon: #e8a2af;
 $black: #1E1E2E;
 $black2: #1A1826;
 $black3: #161320;
-$rosewater: #f2d5cf;
 
 // =================================================================================================
 // GLOBAL BAR STUFF
 // =================================================================================================
 * {
-    all: unset;
-    font-family: "Cartograph CF", "JetBrains Mono Nerd Font";
+  all: unset;
+  font-family: "Cartograph CF";
+}
+
+.sideways_bar {
+  background-color: $black2;
+}
+
+.icon {
 }
 
 // =================================================================================================
-// PROFILE
+// TIME WIDGET
 // =================================================================================================
-.profile {
-    background-color: $black;
-    border-radius: 20px;
+.hour {
+  font-size: 20px;
+  color: $blue;
+  padding-left: 20px;
 }
 
-.profile-name {
-    color: $sky;
-    font-size: 30px;
-}
-
-.status-preface {
-    color: $purple;
-    padding-bottom: 30px;
-    padding-top: 30px;
-}
-
-.status-input {
-    color: $pink;
-    padding: 30px 10px 30px 0px;
+.min {
+  font-size: 20px;
+  color: $red;
 }
 
 // =================================================================================================
-// TODO LIST
+// WORKSPACE WIDGET
 // =================================================================================================
-.todo-list {
-    background-color: $black;
-    border-radius: 20px;
-    padding: 5px;
-}
-
-.todo-title {
-    font-size: 30px;
-    background: $blue;
-    color: $black;
-    border-radius: 20px;
-}
-
-.todo-item {
-    background-color: $black3;
-    margin: 3px;
-    border-radius: 20px;
-    &.todo1 { color: $maroon }
-    &.todo2 { color: $orange}
-    &.todo3 { color: $yellow}
-    &.todo4 { color: $green}
-    &.todo5 { color: $teal}
-}
-
-.todo-check {
-    font-size: 20px;
-    padding: 0px 5px 0px 5px;
-    &:hover {
-        color: $green;
+@for $i from 1 through 10 {
+    $main_color : black;
+    @if      $i == 1  {$main_color : $pink}
+    @else if $i == 2  {$main_color : $purple}
+    @else if $i == 3  {$main_color : $maroon}
+    @else if $i == 4  {$main_color : $red}
+    @else if $i == 5  {$main_color : $orange}
+    @else if $i == 6  {$main_color : $yellow}
+    @else if $i == 7  {$main_color : $green}
+    @else if $i == 8  {$main_color : $teal}
+    @else if $i == 9  {$main_color : $blue}
+    @else if $i == 10 {$main_color : $sky}
+    .spc#{$i} {
+        font-size: 29px;
+        border-radius: 50px;
+        &.active {
+            color: $black3;
+            background-color: $main_color;
+        }
+        &.inactive {
+            color: $main_color;
+            background-color: $black2;
+        }
     }
 }
-// =================================================================================================
-// QUOTE
-// =================================================================================================
-.quote {
-    background-color: $black;
-    border-radius: 20px;
-    padding: 0px 10px 0px 10px;
-    font-style: italic;
-    font-size: 27px;
-}
 
 // =================================================================================================
-// WEATHER
+// VOLUME/AUDIO
 // =================================================================================================
-.weather {
-    background-color: $black;
-    border-radius: 20px;
-}
-
-.weather-icon {
-    font-size: 70px;
+.volume {
+    font-size: 29px;
     color: $orange;
 }
 
-.weather-city {
-    font-size: 20px;
-    color: $teal;
-}
-
-.weather-temp {
-    font-size: 30px;
-    color: $sky;
-}
-
-// =================================================================================================
-// SEARCH BAR
-// =================================================================================================
-.search-bar {
-    background-color: $black;
-    border-radius: 20px;
-}
-
-.search-inner {
-    background-color: $black3;
-    margin: 20px;
-    border-radius: 20px;
-}
-
-.search-preface {
-    padding-left: 10px;
-}
-
-.search-input {
-    padding-left: 10px;
-    color: $red;
-}
-
-.search-icon {
-    padding-right: 20px;
-    padding-left: 10px;
-    color: $red;
-}
-
-// =================================================================================================
-// MEDIA PLAYER
-// =================================================================================================
 .media-player {
-    background-color: $black;
-    border-radius: 20px;
+    background-color: $black3;
 }
 
-.player-image {
-    padding-top: 30px;
+.pin-media-player {
+    font-size: 30px;
+    margin-right: 10px;
+    color: $yellow;
 }
 
 .player-title {
-    font-size: 23px;
-    padding-top: 20px;
+    background-color: $black;
+    font-size: 25;
+    padding-left: 30;
 }
 
 .player-artist {
-    font-size: 15px;
+    background-color: $black2;
+    font-size: 18;
+    padding-left: 30;
+    font-style: italic;
 }
 
 .player-bar trough {
@@ -177,69 +115,78 @@ $rosewater: #f2d5cf;
 }
 
 .media-button {
-    font-size: 20px;
     background-color: $black3;
+    font-size: 20;
     &.prev {
-        color: $blue;
-    }
-    &.play-pause {
         color: $purple;
     }
+    &.pause {
+        color: $red;
+    }
     &.skip {
+        color: $blue;
+    }
+}
+
+// =================================================================================================
+// BRIGHTNESS + POWERMENU
+// =================================================================================================
+.bright-bar trough {
+    background-color: $red;
+    border-radius: 5px;
+    min-height: 12px;
+    min-width: 15px;
+    margin-right: 20px;
+}
+
+.bright-bar trough highlight {
+  background-color: $blue;
+  border-radius: 5px;
+}
+
+.bright {
+    font-size: 29px;
+    color: $maroon;
+}
+
+.power-menu {
+  font-size: 29px;
+}
+
+.power-button {
+    margin-right: 20px;
+    &.reboot {
+        color: $green;
+    }
+    &.logout {
+        color: $blue;
+    }
+    &.lock {
+        color: $purple;
+    }
+    &.off {
         color: $red;
     }
 }
 
 // =================================================================================================
-// TIME & CALENDAR
+// CALENDAR WIDGET
 // =================================================================================================
-.time {
-    background-color: $black;
-    border-radius: 20px;
-    font-size: 30px;
-}
-
 calendar {
     background-color: $black;
-    color: $rosewater;
-    font-size: 16px;
-    border-radius: 20px;
-
-    &.header {
-        color: $red;
-        margin-top: 10px;
-    }
-    &.button {
-        color: $red;
-    }
-    &.highlight {
-        color: $red;
-    }
     &:selected {
         color: $red;
     }
     &:indeterminate {
         color: $black;
     }
-}
-
-// =================================================================================================
-// SHORTCUTS
-// =================================================================================================
-.shortcut {
-    font-size: 45px;
-    border-radius: 20px;
-    color: $black;
-    &.spotify {
-        background-color: $green;
+    &.header {
+        color: $blue;
     }
-    &.usaco {
-        background-color: $purple;
+    &.button {
+        color: $green;
     }
-    &.youtube {
-        background-color: $red;
-    }
-    &.discord {
-        background-color: $blue;
+    &.highlight {
+        color: $red;
     }
 }

@@ -25,7 +25,7 @@
 (defpoll player-title :interval "0.5s"`playerctl --player playerctld metadata --format {{title}}`)
 (defpoll player-artist :interval "0.5s" `playerctl --player playerctld metadata --format {{artist}}`)
 (defpoll player-position :interval "0.1s" `playerctl metadata --format "{{ position/mpris:length*100 }}"`)
-(defpoll player-image :interval "0.5s" `~/.config/eww/scripts/get_image/get_image.sh`)
+(defpoll player-image :interval "0.5s" `~/.config/eww/scripts/media-player/get_image.sh`)
 
 (defwidget media-buttons [height]
   (box :height height

@@ -5,13 +5,44 @@
 (include "./widgets/topbar/bright.yuck")
 (include "./widgets/topbar/power.yuck")
 
+; ----- Sections -----------------------------------------------------------------------------------
+(defwidget top[]
+  (box :width 610
+    (box :halign "start" :width 300 (bar-time))))
+(defwidget mid[]
+  (box :width 700
+    (workspaces :width 400)))
+(defwidget bot[]
+  (box :width 610
+    (box :orientation "h" :valign "center" :halign "end" :space-evenly false :spacing 30
+      (volume)
+      (bright)
+      (power)
+    )))
+; ----- Sections -----------------------------------------------------------------------------------
+
+; ==================================================================================================
+; Windows 
+; ==================================================================================================
 (defwindow topbar
-  :geometry (geometry :x "0px" :y "0px" :width "100%" :height "45px" :anchor "center top")
-  :stacking "bottom" :exclusive true :monitor 0
-    (hgrid :columns "[\"[0]\", \"[1]\", \"[2]\"]" :spacing 10 :orientation "h"
-      (bar-time)
-      (workspaces :width 400)
-      (box (volume)(bright)(power))))
+    :monitor 0
+    :geometry (geometry
+        :x "0px"
+        :y "0px"
+        :width "100%"
+        :height "45px"
+        :anchor "center top"
+    )
+    :stacking "bottom"
+    :exclusive true
+
+    (box
+      :orientation "h"
+      :valign "top"
+      :space-evenly false
+      (top)
+      (mid)
+      (bot)))
 
 (defwindow calendar 
    :monitor 0
