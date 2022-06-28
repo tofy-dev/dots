@@ -1,17 +1,24 @@
-(defwidget grid [columns spacing]
+; Horizontally aligned grid (items can stretch vertically)
+(defwidget hgrid [columns spacing]
   (box :orientation "h" :space-evenly false :spacing spacing  
     (for col in columns 
       (box :orientation "v" :space-evenly false :spacing spacing ; this acts as a column
         (for row in col
           (box (children :nth row)))))))
+; Vertically aligned grid (items can stretch horizontally)
+(defwidget vgrid [rows spacing]
+  (box :orientation "v" :space-evenly false :spacing spacing  
+    (for row in rows
+      (box :orientation "h" :space-evenly false :spacing spacing ; this acts as a row
+        (for col in row
+          (box (children :nth col)))))))
 
 (include "./widgets/media-player.yuck")
-;(include "./widgets/profile.yuck")
-;(include "./widgets/search-bar.yuck")
-;(include "./widgets/shortcuts.yuck")
-;(include "./widgets/time.yuck")
-;(include "./widgets/todo-list.yuck")
-;(include "./widgets/weather.yuck")
+(include "./widgets/profile.yuck")
+(include "./widgets/search-bar.yuck")
+(include "./widgets/time.yuck")
+(include "./widgets/todo-list.yuck")
+(include "./widgets/weather.yuck")
 
 (defwindow menu
     ; -----------------------properties-----------------------
@@ -19,27 +26,36 @@
     :geometry (geometry
         :x "0px"
         :y "0px"
-        :width "1200px"
-        :height "800px"
-        :anchor "center center"
+        :width "0px" ;1200px
+        :height "0px" ;800px
+        :anchor "center"
     )
-    :stacking "bottom"
+    :stacking "overlay"
     :exclusive true
+    :focusable true
 
+    ;(search-bar)(todo-list)(calendar)
+    ;(media-player :height 500)(weather)
+    ;(time)(profile)(shortcuts)
     ; -----------------------widgets-----------------------
-    (grid :columns "[\"[0, 1, 2]\", \"[3, 4]\", \"[5, 6, 7]\"]"
-          :spacing 50 :space-evenly false
-      ;(search-bar)(todo-list)(calendar)
-      ;(media-player :height 500)(weather)
-      ;(time)(profile)(shortcuts)
-      (box :width 425 :height 100 :class "test")
-      (box :height 400 :class "test")
-      (box :height 200 :class "test")
+    (hgrid :columns "[\"[0, 1]\", \"[2, 3]\"]" :spacing 40
+      (hgrid :columns "[\"[0]\", \"[1]\"]" :spacing 40
+        (profile :height 400 :width 300)
+        (vgrid :rows "[\"[0]\", \"[1, 2]\"]" :spacing 40
+          (todo-list :height 200 :width 600)
+          (label :text "Progress is man's ability to complicate simplicity." :class "quote"
+                 :wrap true :xalign 0.5 :height 150 :width 280)
+          (weather :height 150 :width 280)))
+      (search-bar :height 100 :width 740)
 
-      (media-player :width 350 :height 500)
-      (box :height 250 :class "test")
-
-      (box :width 425 :height 200 :class "test")
-      (box :height 300 :class "test")
-      (box :height 200 :class "test")
-    ))
+      (time :height 100 :width 410)
+      (hgrid :columns "[\"[0]\", \"[1, 2, 3, 4]\"]" :spacing 40
+        (media-player :height 400 :width 300)
+        (eventbox :onclick "discord &" :timeout "5000" :class "shortcut discord" :height 70 :width 70
+          (label :xalign 0.40 :text "ﭮ"))
+        (eventbox :onclick "xdg-open 'https://www.youtube.com'" :class "shortcut youtube" :height 70 :width 70
+          (label :xalign 0.30 :text ""))
+        (eventbox :onclick "xdg-open 'https://www.usaco.guide'" :class "shortcut usaco" :height 70 :width 70
+          (label :xalign 0.43 :text ""))
+        (eventbox :onclick "~/Coding/scripts/spotify-adblock.sh &" :timeout "5000ms" :class "shortcut spotify" :height 70 :width 70
+          (label :xalign 0.35 :text "")))))

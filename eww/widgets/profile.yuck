@@ -1,1 +1,12 @@
-(defwidget profile [])
+(defwidget profile [width height]
+  (box :class "profile" :width width :height height :orientation "v" :space-evenly false
+    (image :class "profile-image"
+        :image-width 200 :image-height 200 :vexpand "true"
+        :path "./images/samoyed.gif")
+    (label :class "profile-name" :text "tofy")
+    (box
+      (label :class "status-preface" :text "I'm feeling " :halign "end" :width 10)
+      (input :class "status-input" :value how-im-feeling :onchange `sed -i '1s/.*/{}/' /tmp/how-im-feeling`)
+    )))
+
+(defpoll how-im-feeling :interval "5s" `cat /tmp/how-im-feeling | awk 'NR == 1 { print }'`)

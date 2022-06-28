@@ -1,1 +1,13 @@
-(defwidget weather [])
+(defwidget weather [width height]
+  (box :class "weather" :width width :height height
+    (box
+      (label :class "weather-icon" :text "盛")
+      (box :orientation "v"
+        (label :class "weather-city" :text current-city)
+        (label :class "weather-temp" :text "${current-weather}${refresh-weather} °F")
+        )
+      )
+    ))
+(defpoll current-city :interval "300s" `curl ipinfo.io | grep "city" | awk '{ print $2}' | tr -d '"' | tr -d ','`)
+(defpoll refresh-weather :interval "300s" `rm ./scripts/get_weather/get_weather.sh && echo -n "./scripts/get_weather/ansiweather -l " >> "./scripts/get_weather/get_weather.sh" && chmod +x ./scripts/get_weather/get_weather.sh && curl ipinfo.io | grep "city" | awk '{ print $2}' | tr -d '"' | tr -d ',' >> ./scripts/get_weather/get_weather.sh`)
+(defpoll current-weather :interval "300s" `./scripts/get_weather/get_weather.sh | awk '{ print $5}'`)

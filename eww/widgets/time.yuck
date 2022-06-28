@@ -1,1 +1,10 @@
-(defwidget time [])
+(defwidget time [width height]
+  (box :class "time" :width width :height height :orientation "h"
+    (label :text "${hour}:${min} ${am-pm}")))
+
+(defpoll hour :interval "0.5s"
+  `date | grep -o "..:..:.." | grep -o "..:.." | grep -o "[^:].." | tr -d ':'`)
+(defpoll min :interval "0.5s"
+  `date | grep -o "..:..:.." | grep -o "..:.." | grep -o ":.." | tr -d ':'`)
+(defpoll am-pm :interval "60s"
+  `date | awk '{ print $5 }'`)

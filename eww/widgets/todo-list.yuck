@@ -1,1 +1,20 @@
-(defwidget todo-list [])
+(defwidget todo-item [num value]
+  (box :class "todo-item todo${num}" :space-evenly false
+    (button :onclick "sed -i '${num}d' /tmp/todo && echo >> /tmp/todo"
+            :class "todo-check" :visible {value != "" ? true : false} "﫠 ")
+    (input :value value :onchange `sed -i '${num}s/.*/{}/' /tmp/todo` :hexpand true)))
+
+(defwidget todo-list [width height]
+  (box :class "todo-list" :width width :height height :orientation "v"
+    (todo-item :num 1 :value todo1)
+    (todo-item :num 2 :value todo2)
+    (todo-item :num 3 :value todo3)
+    (todo-item :num 4 :value todo4)
+    (todo-item :num 5 :value todo5)
+    ))
+
+(defpoll todo1 :interval "0.5s" `cat /tmp/todo | awk 'NR == 1 { print }'`)
+(defpoll todo2 :interval "0.5s" `cat /tmp/todo | awk 'NR == 2 { print }'`)
+(defpoll todo3 :interval "0.5s" `cat /tmp/todo | awk 'NR == 3 { print }'`)
+(defpoll todo4 :interval "0.5s" `cat /tmp/todo | awk 'NR == 4 { print }'`)
+(defpoll todo5 :interval "0.5s" `cat /tmp/todo | awk 'NR == 5 { print }'`)
