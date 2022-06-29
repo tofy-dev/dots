@@ -29,6 +29,6 @@
 
 (defwidget media-buttons [height]
   (box :height height
-    (button :timeout "3s" :onclick "playerctl previous" (label :class "media-button prev" :yalign 0.5 :text "玲"))
-    (button :timeout "3s" :onclick "playerctl play-pause" (label :class "media-button play-pause" :yalign 0.5 :text "懶"))
-    (button :timeout "3s" :onclick "playerctl next" (label :class "media-button skip" :yalign 0.5 :text "怜"))))
+    (eventbox :timeout "3s" :cursor "pointer" :onclick "playerctl previous" (label :class "media-button prev" :yalign 0.5 :text "玲"))
+    (eventbox :timeout "3s" :cursor "pointer" :onclick "playerctl play-pause" (label :class "media-button play-pause" :yalign 0.5 :text "懶"))
+    (eventbox :timeout "3s" :cursor "pointer" :onclick "playerctl next" (label :class "media-button skip" :yalign 0.5 :text "怜"))))

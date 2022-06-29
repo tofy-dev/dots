@@ -23,11 +23,11 @@
       (time :height 100 :width 410)
       (hgrid :columns "[\"[0]\", \"[1, 2, 3, 4]\"]" :spacing 40
         (media-player :height 400 :width 300)
-        (eventbox :onclick "discord &" :timeout "5000" :class "shortcut discord" :height 70 :width 70
+        (eventbox :onclick "discord &" :timeout "5000" :class "shortcut discord" :cursor "pointer" :height 70 :width 70
           (label :xalign 0.40 :text "ﭮ"))
-        (eventbox :onclick "xdg-open 'https://www.youtube.com'" :class "shortcut youtube" :height 70 :width 70
+        (eventbox :onclick "xdg-open 'https://www.youtube.com'" :class "shortcut youtube" :cursor "pointer" :height 70 :width 70
           (label :xalign 0.30 :text ""))
-        (eventbox :onclick "xdg-open 'https://www.usaco.guide'" :class "shortcut usaco" :height 70 :width 70
+        (eventbox :onclick "xdg-open 'https://www.usaco.guide'" :class "shortcut usaco" :cursor "pointer" :height 70 :width 70
           (label :xalign 0.43 :text ""))
-        (eventbox :onclick "~/Coding/scripts/spotify-adblock.sh &" :timeout "5000ms" :class "shortcut spotify" :height 70 :width 70
+        (eventbox :onclick "~/Coding/scripts/spotify-adblock.sh &" :timeout "5000ms" :cursor "pointer" :class "shortcut spotify" :height 70 :width 70
           (label :xalign 0.35 :text "")))))

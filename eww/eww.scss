@@ -24,8 +24,7 @@ $black3: #161320;
   font-family: "Cartograph CF";
 }
 
-.sideways_bar {
-  background-color: $black2;
+.topbar {
 }
 
 .icon {
@@ -69,7 +68,6 @@ $black3: #161320;
         }
         &.inactive {
             color: $main_color;
-            background-color: $black2;
         }
     }
 }

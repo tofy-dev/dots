@@ -31,6 +31,7 @@ $rosewater: #f2d5cf;
 .profile {
     background-color: $black;
     border-radius: 20px;
+    border-top: 5px solid $sky;
 }
 
 .profile-name {
@@ -56,6 +57,7 @@ $rosewater: #f2d5cf;
     background-color: $black;
     border-radius: 20px;
     padding: 5px;
+    border-top: 5px solid $pink;
 }
 
 .todo-title {
@@ -69,11 +71,11 @@ $rosewater: #f2d5cf;
     background-color: $black3;
     margin: 3px;
     border-radius: 20px;
-    &.todo1 { color: $maroon }
-    &.todo2 { color: $orange}
-    &.todo3 { color: $yellow}
-    &.todo4 { color: $green}
-    &.todo5 { color: $teal}
+    &.todo1 { color: $maroon; border-bottom: 2px solid $maroon}
+    &.todo2 { color: $orange; border-bottom: 2px solid $orange}
+    &.todo3 { color: $yellow; border-bottom: 2px solid $yellow}
+    &.todo4 { color: $green;  border-bottom: 2px solid $green}
+    &.todo5 { color: $teal;   border-bottom: 2px solid $teal}
 }
 
 .todo-check {
@@ -92,6 +94,8 @@ $rosewater: #f2d5cf;
     padding: 0px 10px 0px 10px;
     font-style: italic;
     font-size: 27px;
+    color: $rosewater;
+    border-top: 5px solid $rosewater;
 }
 
 // =================================================================================================
@@ -100,6 +104,7 @@ $rosewater: #f2d5cf;
 .weather {
     background-color: $black;
     border-radius: 20px;
+    border-top: 5px solid $teal;
 }
 
 .weather-icon {
@@ -123,6 +128,7 @@ $rosewater: #f2d5cf;
 .search-bar {
     background-color: $black;
     border-radius: 20px;
+    border-top: 5px solid $red;
 }
 
 .search-inner {
@@ -152,6 +158,7 @@ $rosewater: #f2d5cf;
 .media-player {
     background-color: $black;
     border-radius: 20px;
+    border-top: 5px solid $green;
 }
 
 .player-image {
@@ -194,6 +201,7 @@ $rosewater: #f2d5cf;
 // TIME & CALENDAR
 // =================================================================================================
 .time {
+    border-top: 5px solid $yellow;
     background-color: $black;
     border-radius: 20px;
     font-size: 30px;

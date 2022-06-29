@@ -7,5 +7,5 @@
         (label :class "weather-temp" :text "${current-weather}${refresh-weather} °F")
         ))))
 (defpoll current-city :interval "300s" `curl http://www.geoplugin.net/javascript.gp | awk 'NR==5 { print $5 }' | tr -d "'" | tr -d ";" | tr -d "}"`)
-(defpoll refresh-weather :interval "10s" `echo "test" && ~/.config/eww/scripts/weather/refresh-weather.sh`)
-(defpoll current-weather :interval "10s" `cat /tmp/weather | awk '{ print $5 }'`)
+(defpoll refresh-weather :interval "1s" `~/.config/eww/scripts/weather/refresh_weather.sh`)
+(defpoll current-weather :interval "1s" `cat /tmp/weather | awk '{ print $5 }'`)

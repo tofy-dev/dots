@@ -54,3 +54,4 @@
    :stacking "fg"
    (eventbox :onhoverlost "eww close calendar"
         (calendar)))
+
