@@ -3,7 +3,5 @@
     (box :class "search-inner" :space-evenly false
       (label :class "search-preface" :text "Search... ")
       (input :class "search-input" :value "" :hexpand true
-             :onaccept `xdg-open 'https://www.google.com/search\?client\=firefox\&q\=${search-text}'`
-             :onchange "eww update search-text='{}'")
+             :onaccept `firefox --search "{}"`)
       (label :class "search-icon" :text ""))))
-(defvar search-text "")
