@@ -1,6 +1,6 @@
 (defwidget bar-time []
     (eventbox
-    :onhover "eww open calendar"
+    :onclick "eww open calendar"
     (box
       :space-evenly "false"
       :spacing 20

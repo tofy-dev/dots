@@ -15,9 +15,9 @@
         (profile :height 400 :width 300)
         (vgrid :rows "[\"[0]\", \"[1, 2]\"]" :spacing 40
           (todo-list :height 200 :width 600)
-          (label :text "Progress is man's ability to complicate simplicity." :class "quote"
-                 :wrap true :xalign 0.5 :height 150 :width 280)
-          (weather :height 150 :width 280)))
+          (weather :height 150 :width 240)
+          (label :text "\"We must consciously create our own world, not according to mindless customs and destructive prejudices, but according to the canons of reason, reflection, and discourse that uniquely belong to our own species.\""
+                 :class "quote" :wrap true :xalign 0.5 :height 150 :width 320)))
       (search-bar :height 100 :width 740)
 
       (time :height 100 :width 410)

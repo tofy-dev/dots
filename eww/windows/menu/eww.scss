@@ -1,21 +1,21 @@
 // =================================================================================================
 // COLORS 
 // =================================================================================================
-$red: #f28fad;
-$orange: #f8bd96;
-$yellow: #fae3b0;
-$green: #abe9b3;
-$teal: #b5e8e0;
-$blue: #96cdfb;
-$sky: #89dceb;
-$purple: #ddb6f2;
-$pink: #f5c2e7;
-$maroon: #e8a2af;
+$rosewater: #f5e0dc;
 
-$black: #1E1E2E;
-$black2: #1A1826;
-$black3: #161320;
-$rosewater: #f2d5cf;
+$red:       #f38ba8;
+$orange:    #fab387;
+$yellow:    #f9e2af;
+$green:     #a6e3a1;
+$teal:      #94e2d5;
+$sky:       #89dceb;
+$blue:      #89b4fa;
+$purple:    #cba6f7;
+$pink:      #f5c2e7;
+$orange:    #fab387;
+
+$black:     #161320;
+$black2:    #1E1E2E;
 
 // =================================================================================================
 // GLOBAL BAR STUFF
@@ -30,7 +30,7 @@ $rosewater: #f2d5cf;
 // =================================================================================================
 .profile {
     background-color: $black;
-    border-radius: 20px;
+    border-radius: 10px;
     border-top: 5px solid $sky;
 }
 
@@ -55,45 +55,60 @@ $rosewater: #f2d5cf;
 // =================================================================================================
 .todo-list {
     background-color: $black;
-    border-radius: 20px;
+    border-radius: 10px;
     padding: 5px;
-    border-top: 5px solid $pink;
+    border-top: 5px solid $purple;
 }
 
 .todo-title {
     font-size: 30px;
     background: $blue;
     color: $black;
-    border-radius: 20px;
+    border-radius: 10px;
 }
 
 .todo-item {
-    background-color: $black3;
+    background-color: $black2;
     margin: 3px;
-    border-radius: 20px;
-    &.todo1 { color: $maroon; border-bottom: 2px solid $maroon}
-    &.todo2 { color: $orange; border-bottom: 2px solid $orange}
-    &.todo3 { color: $yellow; border-bottom: 2px solid $yellow}
-    &.todo4 { color: $green;  border-bottom: 2px solid $green}
-    &.todo5 { color: $teal;   border-bottom: 2px solid $teal}
+    border-radius: 10px;
+    &.todo1 {
+        color: $red;
+        border-bottom: 2px solid $red;
+    }
+    &.todo2 {
+        color: $orange;
+        border-bottom: 2px solid $orange;
+    }
+    &.todo3 {
+        color: $yellow;
+        border-bottom: 2px solid $yellow;
+    }
+    &.todo4 {
+        color: $green;
+        border-bottom: 2px solid $green;
+    }
+    &.todo5 {
+        color: $teal;
+        border-bottom: 2px solid $teal;
+    }
 }
 
 .todo-check {
     font-size: 20px;
+}
+
+.todo-input {
     padding: 0px 5px 0px 5px;
-    &:hover {
-        color: $green;
-    }
 }
 // =================================================================================================
 // QUOTE
 // =================================================================================================
 .quote {
     background-color: $black;
-    border-radius: 20px;
+    border-radius: 10px;
     padding: 0px 10px 0px 10px;
     font-style: italic;
-    font-size: 27px;
+    font-size: 15px;
     color: $rosewater;
     border-top: 5px solid $rosewater;
 }
@@ -103,7 +118,7 @@ $rosewater: #f2d5cf;
 // =================================================================================================
 .weather {
     background-color: $black;
-    border-radius: 20px;
+    border-radius: 10px;
     border-top: 5px solid $teal;
 }
 
@@ -127,14 +142,14 @@ $rosewater: #f2d5cf;
 // =================================================================================================
 .search-bar {
     background-color: $black;
-    border-radius: 20px;
+    border-radius: 10px;
     border-top: 5px solid $red;
 }
 
 .search-inner {
-    background-color: $black3;
+    background-color: $black2;
     margin: 20px;
-    border-radius: 20px;
+    border-radius: 10px;
 }
 
 .search-preface {
@@ -157,7 +172,7 @@ $rosewater: #f2d5cf;
 // =================================================================================================
 .media-player {
     background-color: $black;
-    border-radius: 20px;
+    border-radius: 10px;
     border-top: 5px solid $green;
 }
 
@@ -185,7 +200,7 @@ $rosewater: #f2d5cf;
 
 .media-button {
     font-size: 20px;
-    background-color: $black3;
+    background-color: $black2;
     &.prev {
         color: $blue;
     }
@@ -203,15 +218,16 @@ $rosewater: #f2d5cf;
 .time {
     border-top: 5px solid $yellow;
     background-color: $black;
-    border-radius: 20px;
+    border-radius: 10px;
     font-size: 30px;
+    color: $yellow;
 }
 
 calendar {
     background-color: $black;
     color: $rosewater;
     font-size: 16px;
-    border-radius: 20px;
+    border-radius: 10px;
 
     &.header {
         color: $red;
@@ -236,7 +252,7 @@ calendar {
 // =================================================================================================
 .shortcut {
     font-size: 45px;
-    border-radius: 20px;
+    border-radius: 10px;
     color: $black;
     &.spotify {
         background-color: $green;

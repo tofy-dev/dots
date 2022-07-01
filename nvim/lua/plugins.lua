@@ -22,6 +22,7 @@ return require('packer').startup(function()
   use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
   use 'lervag/vimtex'
   use 'elkowar/yuck.vim'
+  use 'fladson/vim-kitty'
 
   -- ==============================================================================================
   -- autocomplete 

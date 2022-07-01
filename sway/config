@@ -8,7 +8,7 @@ set $down j
 set $up k
 set $right l
 
-set $term alacritty
+set $term kitty 
 set $menu dmenu_path | dmenu | xargs swaymsg exec --
 
 # =================================================================================================
@@ -117,10 +117,11 @@ client.unfocused                $unfocus_clr    $unfocus_clr    $focus_clr      
 # set $opacity 1
 # for_window [app_id="Alacritty"] opacity $opacity
 gaps inner 15
-#default_border pixel 10
+default_border pixel
+default_floating_border pixel
 
 font Cartograph CF 14px
-output "*" bg ~/Visuals/Backgrounds/evening-sky.png fill
+output "*" bg ~/Visuals/Backgrounds/flamingoclouds.jpg fill
 
 # =================================================================================================
 # STATUS BAR

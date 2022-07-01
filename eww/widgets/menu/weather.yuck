@@ -1,11 +1,11 @@
 (defwidget weather [width height]
   (box :class "weather" :width width :height height
-    (box
-      (label :class "weather-icon" :text "盛")
+    (box :space-evenly false
+      (label :class "weather-icon" :text "盛" :xalign "0.5" :width 120)
       (box :orientation "v"
         (label :class "weather-city" :text current-city)
         (label :class "weather-temp" :text "${current-weather}${refresh-weather} °F")
         ))))
 (defpoll current-city :interval "300s" `curl http://www.geoplugin.net/javascript.gp | awk 'NR==5 { print $5 }' | tr -d "'" | tr -d ";" | tr -d "}"`)
-(defpoll refresh-weather :interval "1s" `~/.config/eww/scripts/weather/refresh_weather.sh`)
-(defpoll current-weather :interval "1s" `cat /tmp/weather | awk '{ print $5 }'`)
+(defpoll refresh-weather :interval "300s" `~/.config/eww/scripts/weather/refresh_weather.sh`)
+(defpoll current-weather :interval "10s" `cat /tmp/weather | awk '{ print $5 }'`)
