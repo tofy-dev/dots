@@ -1,4 +1,4 @@
 (defwidget wifi []
   (box :class "wifi" :space-evenly false :valign "center"
     (label :class "wifi-icon" :text "${EWW_NET.wlp1s0.NET_DOWN > 0 ? '直' : '睊'}")
-    (label :class "upload-download" :text "${EWW_NET.wlp1s0.NET_DOWN > 0 ? "${round(EWW_NET.wlp1s0.NET_UP/1000, 2)} ${round(EWW_NET.wlp1s0.NET_DOWN/1000, 2)}" : 'No Connection'}")))
+    (label :class "upload-download" :text "${EWW_NET.wlp1s0.NET_DOWN > 0 ? "Connected" : 'Not Connected'}")))

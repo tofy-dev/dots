@@ -5,8 +5,8 @@
     (input :value value :onchange `sed -i "${num}s/.*/{}/" /tmp/todo` :onaccept `~/.config/eww/scripts/refresh_todo.sh`
            :class "todo-input" :hexpand true)))
 
-(defwidget todo-list [width height]
-  (box :class "todo-list" :width width :height height :orientation "v"
+(defwidget todo-list [height]
+  (box :class "todo-list" :height height :orientation "v"
     (todo-item :num 1 :value todo1)
     (todo-item :num 2 :value todo2)
     (todo-item :num 3 :value todo3)

@@ -1,7 +1,7 @@
 // =================================================================================================
 // COLORS 
 // =================================================================================================
-$rosewater: #f5e0dc;
+$white:     #BAC2DE;
 
 $red:       #f38ba8;
 $orange:    #fab387;
@@ -22,57 +22,110 @@ $black2:    #1E1E2E;
 // =================================================================================================
 * {
     all: unset;
-    font-family: "Cartograph CF", "JetBrains Mono Nerd Font";
+    font-family: "Cartograph CF";
+}
+
+.menu {
+    background-color: $black;
+    padding: 20px;
 }
 
 // =================================================================================================
 // PROFILE
 // =================================================================================================
 .profile {
-    background-color: $black;
+    background-color: $black2;
     border-radius: 10px;
-    border-left: 5px solid $sky;
-    border-right: 5px solid $sky;
+    padding-left: 20px;
 }
 
 .profile-name {
-    color: $sky;
+    color: $blue;
     font-size: 30px;
 }
 
-.status-preface {
-    color: $purple;
-    padding-bottom: 30px;
-    padding-top: 30px;
+// =================================================================================================
+// CONTROL MENU + BATTERY
+// =================================================================================================
+.control-icon {
+    color: gray;
+    font-size: 28px;
+    margin: 0px 0px 0px 0px;
+    background-color: $black2;
+    border-radius: 50px;
 }
 
-.status-input {
-    color: $pink;
-    padding: 30px 10px 30px 0px;
+.control-bar {
+    margin-top: 20px;
+    trough {
+        border-radius: 15px;
+        min-height: 12px;
+        min-width: 30px;
+        background-color: $black2;
+    }
+    trough highlight {
+        border-radius: 15px;
+    }
+    &.volume {
+        trough highlight {
+            background-color: $red;
+        }
+    }
+    &.microphone {
+        trough highlight {
+            background-color: $yellow;
+        }
+    }
+    &.brightness {
+        trough highlight {
+            background-color: $blue;
+        }
+    }
+}
+
+.battery {
+    margin-left: 20px;
+}
+
+.battery-progress {
+    background-color: $black2;
+    font-size: 70px;
+    color: $green;
+}
+
+.time-remaining {
+    border-radius: 10px;
+    margin: 20px 20px 0px 20px;
+    padding: 10px 0px 10px 0px;
+    font-size: 18px;
+    font-family: "JetBrains Mono Nerd Font";
+    color: $red;
+}
+
+// =================================================================================================
+// METAINFO
+// =================================================================================================
+.metainfo {
+    background-color: $black2;
+    color: $white;
+    font-size: 20px;
+    border-radius: 10px;
+    font-family: "JetBrains Mono Nerd Font";
 }
 
 // =================================================================================================
 // TODO LIST
 // =================================================================================================
 .todo-list {
-    background-color: $black;
-    border-radius: 10px;
+    background-color: $black2;
+    border-radius: 20px;
     padding: 5px;
-    border-left: 5px solid $purple;
-    border-right: 5px solid $purple;
-}
-
-.todo-title {
-    font-size: 30px;
-    background: $blue;
-    color: $black;
-    border-radius: 10px;
 }
 
 .todo-item {
-    background-color: $black2;
-    margin: 3px;
-    border-radius: 10px;
+    background-color: $black;
+    border-radius: 5px;
+    margin: 5px;
     &.todo1 {
         color: $red;
         border-bottom: 2px solid $red;
@@ -94,101 +147,30 @@ $black2:    #1E1E2E;
         border-bottom: 2px solid $teal;
     }
 }
-
 .todo-check {
     font-size: 20px;
+    margin-left: 5px;
 }
 
 .todo-input {
     padding: 0px 5px 0px 5px;
 }
-// =================================================================================================
-// QUOTE
-// =================================================================================================
-.quote {
-    background-color: $black;
-    border-radius: 10px;
-    padding: 0px 10px 0px 10px;
-    font-style: italic;
-    font-size: 15px;
-    color: $rosewater;
-    border-left: 5px solid $rosewater;
-    border-right: 5px solid $rosewater;
-}
 
 // =================================================================================================
-// WEATHER
-// =================================================================================================
-.weather {
-    background-color: $black;
-    border-radius: 10px;
-    border-left: 5px solid $orange;
-    border-right: 5px solid $orange;
-}
-
-.weather-icon {
-    font-size: 70px;
-    color: $orange;
-}
-
-.weather-city {
-    font-size: 20px;
-    color: $teal;
-}
-
-.weather-temp {
-    font-size: 30px;
-    color: $sky;
-}
-
-// =================================================================================================
-// SEARCH BAR
-// =================================================================================================
-.search-bar {
-    background-color: $black;
-    border-radius: 10px;
-    border-left: 5px solid $red;
-    border-right: 5px solid $red;
-}
-
-.search-inner {
-    background-color: $black2;
-    margin: 20px;
-    border-radius: 10px;
-}
-
-.search-preface {
-    padding-left: 10px;
-}
-
-.search-input {
-    padding-left: 10px;
-    color: $red;
-}
-
-.search-icon {
-    padding-right: 20px;
-    padding-left: 10px;
-    color: $red;
-}
-
-// =================================================================================================
-// MEDIA PLAYER
+// MEDIA PLAYER 
 // =================================================================================================
 .media-player {
-    background-color: $black;
+    background-color: $black2;
     border-radius: 10px;
-    border-right: 5px solid $green;
-    border-left: 5px solid $green;
+    padding: 10px;
 }
 
 .player-image {
-    padding-top: 30px;
+    margin-right: 10px;
 }
-
 .player-title {
+    padding-top: 10px;
     font-size: 23px;
-    padding-top: 20px;
 }
 
 .player-artist {
@@ -196,17 +178,16 @@ $black2:    #1E1E2E;
 }
 
 .player-bar trough {
-    min-height: 10px;
+    background-color: $black;
+    min-height: 7px;
     progress {
-        min-height: 10px;
         background-color: $green;
-        border-radius: 5px;
     }
 }
 
 .media-button {
     font-size: 20px;
-    background-color: $black2;
+    background-color: $black;
     &.prev {
         color: $blue;
     }
@@ -219,58 +200,23 @@ $black2:    #1E1E2E;
 }
 
 // =================================================================================================
-// TIME & CALENDAR
+// POWER MENU
 // =================================================================================================
-.time {
-    border-left: 5px solid $blue;
-    border-right: 5px solid $blue;
-    background-color: $black;
-    border-radius: 10px;
-    font-size: 30px;
-    color: $blue;
-}
-
-calendar {
-    background-color: $black;
-    color: $rosewater;
-    font-size: 16px;
-    border-radius: 10px;
-
-    &.header {
-        color: $red;
-        margin-top: 10px;
-    }
-    &.button {
-        color: $red;
-    }
-    &.highlight {
-        color: $red;
-    }
-    &:selected {
-        color: $red;
-    }
-    &:indeterminate {
-        color: $black;
-    }
-}
-
-// =================================================================================================
-// SHORTCUTS
-// =================================================================================================
-.shortcut {
+.power {
     font-size: 45px;
-    border-radius: 10px;
+    background-color: $black2;
+    border-radius: 50px;
     color: $black;
-    &.spotify {
+    &.restart {
         background-color: $green;
     }
-    &.usaco {
+    &.sleep {
+        background-color: $blue;
+    }
+    &.lock {
         background-color: $purple;
     }
-    &.youtube {
+    &.shutdown {
         background-color: $red;
-    }
-    &.discord {
-        background-color: $blue;
     }
 }

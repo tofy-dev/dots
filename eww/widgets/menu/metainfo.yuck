@@ -1,0 +1,8 @@
+(defwidget metainfo [height]
+  (label :class "metainfo" :height height
+    :text " ${hour}:${min} | ${day}, ${date}"
+    ))
+(defpoll hour :interval "10s" `date +%R | tr ':' ' ' | awk '{ print $1 }'`)
+(defpoll min :interval "10s" `date +%R | tr ':' ' ' | awk '{ print $2 }'`)
+(defpoll date :interval "10s" `date "+%m %d %y"`)
+(defpoll day :interval "10s" `date | awk '{ print $1 }'`)

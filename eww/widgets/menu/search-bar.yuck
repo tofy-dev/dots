@@ -1,7 +1,0 @@
-(defwidget search-bar [width height]
-  (box :class "search-bar" :width width :height height :orientation "h"
-    (box :class "search-inner" :space-evenly false
-      (label :class "search-preface" :text "Search... ")
-      (input :class "search-input" :value "" :hexpand true
-             :onaccept `xdg-open \"https://google.com/search?q={}\"`)
-      (label :class "search-icon" :text ""))))

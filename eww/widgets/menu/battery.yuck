@@ -1,0 +1,6 @@
+(defwidget battery []
+  (box :class "battery" :hexpand true :orientation "v" :space-evenly false
+    (circular-progress :value {EWW_BATTERY.BAT1.capacity} :class "battery-progress"
+                       :vexpand true :dynamic true :thickness 7.0 :clockwise false "")
+    (label :class "time-remaining" :text "祥 ${time-remaining} hrs")))
+(defpoll time-remaining :interval "10s" `upower -i /org/freedesktop/UPower/devices/battery_BAT1 | grep "time to empty" | grep -o ":.*" | awk '{ print $2 }'`)

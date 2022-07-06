@@ -1,33 +1,29 @@
 (include "../../widgets/containers.yuck")
-(include "../../widgets/menu/media-player.yuck")
 (include "../../widgets/menu/profile.yuck")
-(include "../../widgets/menu/search-bar.yuck")
-(include "../../widgets/menu/time.yuck")
+(include "../../widgets/menu/controls.yuck")
+(include "../../widgets/menu/battery.yuck")
+(include "../../widgets/menu/metainfo.yuck")
 (include "../../widgets/menu/todo-list.yuck")
-(include "../../widgets/menu/weather.yuck")
+(include "../../widgets/menu/media-player.yuck")
 
 (defwindow menu
-    :geometry (geometry :x "0px" :y "0px" :width "0px" :height "0px" :anchor "center")
+    :geometry (geometry :x "15px" :y "15px" :width "400px" :height "990px" :anchor "top right")
     :stacking "overlay" :exclusive true :focusable true :monitor 0
 
-    (hgrid :columns "[\"[0, 1]\", \"[2, 3]\"]" :spacing 20
-      (hgrid :columns "[\"[0]\", \"[1]\"]" :spacing 20
-        (profile :height 370 :width 300)
-        (vgrid :rows "[\"[0]\", \"[1, 2]\"]" :spacing 20
-          (todo-list :height 200 :width 600)
-          (weather :height 150 :width 240)
-          (label :text "\"We must consciously create our own world, not according to mindless customs and destructive prejudices, but according to the canons of reason, reflection, and discourse that uniquely belong to our own species.\""
-                 :class "quote" :wrap true :xalign 0.5 :height 150 :width 320)))
-      (search-bar :height 100 :width 740)
-
-      (time :height 100 :width 410)
-      (hgrid :columns "[\"[0]\", \"[1, 2, 3, 4]\"]" :spacing 20
-        (media-player :height 370 :width 300)
-        (eventbox :onclick "discord &" :timeout "5000" :class "shortcut discord" :cursor "pointer" :height 77 :width 77
-          (label :xalign 0.40 :text "ﭮ"))
-        (eventbox :onclick "xdg-open 'https://www.youtube.com'" :class "shortcut youtube" :cursor "pointer" :height 77 :width 77
-          (label :xalign 0.30 :text ""))
-        (eventbox :onclick "xdg-open 'https://www.usaco.guide'" :class "shortcut usaco" :cursor "pointer" :height 77 :width 77
-          (label :xalign 0.43 :text ""))
-        (eventbox :onclick "~/Coding/scripts/spotify-adblock.sh &" :timeout "5000ms" :cursor "pointer" :class "shortcut spotify" :height 77 :width 77
-          (label :xalign 0.35 :text "")))))
+    (box :class "menu" :space-evenly false :orientation "v" :halign "center" :spacing 20
+      (profile :height 140)
+      (box :space-evenly false
+        (controls)
+        (battery))
+      (metainfo :height 60)
+      (todo-list :height 250)
+      (media-player :height 100)
+      (box :spacing 20 :class "powermenu" :space-evenly false
+        (button :onclick "" :class "power restart" :height 75 :width 75
+          (label :text "ﰇ"))
+        (button :onclick "" :class "power sleep" :height 75 :width 75
+          (label :text ""))
+        (button :onclick "" :class "power lock" :height 75 :width 75
+          (label :text ""))
+        (button :onclick "" :class "power shutdown" :height 75 :width 75
+          (label :text "")))))

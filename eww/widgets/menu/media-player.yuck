@@ -1,34 +1,32 @@
-(defwidget media-player [height width]
-    (box :class "media-player" :orientation "v" :space-evenly false 
-         :height height :width width :halign "center"
+(defwidget media-player [height]
+    (box :class "media-player" :orientation "h" :valign "center" :space-evenly false 
+         :height height
         (image :class "player-image"
-            :valign "start"
-            :image-width 230
-            :image-height 230
+            :image-width height
+            :image-height height
             :path image-path)
-        (label
-            :class "player-title"
-            :text "${player-title}${player-image}"
-            :limit-width 15
-            :xalign 0.5
-            :height 30)
-        (label
-            :class "player-artist"
-            :text player-artist
-            :height 30
-            :xalign 0.5
-            :height 30)
-        (box :vexpand true)
-        (media-buttons :height 50)
-        (progress :value player-position :class "player-bar" :orientation "h" :valign "end")))
+        (box :orientation "v" :space-evenly false :hexpand true
+          (label :class "player-title"
+              :text "${player-title}${player-image}"
+              :limit-width 18
+              :xalign 0
+              :height 30)
+          (label :class "player-artist"
+              :vexpand true
+              :text player-artist
+              :limit-width 17
+              :xalign 0
+              :height 30)
+          (progress :value player-position :class "player-bar" :orientation "h" :valign "end")
+          (media-buttons))))
 (defvar image-path "../../images/album")
 (defpoll player-title :interval "0.5s"`playerctl --player playerctld metadata --format {{title}}`)
 (defpoll player-artist :interval "0.5s" `playerctl --player playerctld metadata --format {{artist}}`)
 (defpoll player-position :interval "0.1s" `playerctl metadata --format "{{ position/mpris:length*100 }}"`)
 (defpoll player-image :interval "0.5s" `~/.config/eww/scripts/media-player/get_image.sh`)
 
-(defwidget media-buttons [height]
-  (box :height height
+(defwidget media-buttons []
+  (box :hexpand true
     (eventbox :timeout "3s" :cursor "pointer" :onclick "playerctl previous" (label :class "media-button prev" :yalign 0.5 :text "玲"))
     (eventbox :timeout "3s" :cursor "pointer" :onclick "playerctl play-pause" (label :class "media-button play-pause" :yalign 0.5 :text "懶"))
     (eventbox :timeout "3s" :cursor "pointer" :onclick "playerctl next" (label :class "media-button skip" :yalign 0.5 :text "怜"))))

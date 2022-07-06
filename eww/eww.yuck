@@ -1,9 +1,5 @@
 (include "./widgets/containers.yuck")
-(include "./widgets/topbar/time.yuck")
-(include "./widgets/topbar/volume.yuck")
 (include "./widgets/topbar/workspaces.yuck")
-(include "./widgets/topbar/bright.yuck")
-(include "./widgets/topbar/power.yuck")
 (include "./widgets/topbar/wifi.yuck")
 (include "./widgets/topbar/battery.yuck")
 

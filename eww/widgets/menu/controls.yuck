@@ -1,0 +1,18 @@
+(defwidget controls []
+  (box :orientation "h" :class "controls" :spacing 10
+    (box :class "volume" :orientation "v" :halign "center" :space-evenly false
+      (label :class "control-icon" :text "" :width 55 :height 55)
+      (scale :class "control-bar volume" :value current-volume :onchange "amixer -M sset Master {}%"
+             :flipped true :orientation "v" :height 150 :width 20 :min 0 :max 101))
+    (box :class "microphone" :orientation "v" :halign "center" :space-evenly false
+      (label :class "control-icon" :text "" :width 55 :height 55)
+      (scale :class "control-bar microphone" :value current-mic :onchange "amixer -M sset Capture {}%"
+             :flipped true :orientation "v" :height 150 :width 20 :min 0 :max 101))
+    (box :class "brightness" :orientation "v" :halign "center" :space-evenly false
+      (label :class "control-icon" :text "" :width 55 :height 55)
+      (scale :class "control-bar brightness" :value current-brightness :onchange "brightnessctl set {}%"
+             :flipped true :orientation "v" :height 150 :width 20 :min 0 :max 101))))
+
+(defpoll current-volume :interval "1s" `amixer | grep -E 'Front Left: Playback' | awk '{ print $5 }' | tr -d '\[\%\]'`)
+(defpoll current-mic :interval "1s" `amixer | grep -E 'Front Left: Capture' | awk '{ print $5 }' | tr -d '\[\%\]'`)
+(defpoll current-brightness :interval "1s" `brightnessctl -m -d amdgpu_bl0 | awk -F, '{print substr($4, 0, length($4)-1)}' | tr -d '%'`)
