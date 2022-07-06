@@ -121,7 +121,7 @@ default_border pixel
 default_floating_border pixel
 
 font Cartograph CF 14px
-output "*" bg ~/Visuals/Backgrounds/flamingoclouds.jpg fill
+output "*" bg ~/Visuals/Backgrounds/forest.jpg fill
 
 # =================================================================================================
 # STATUS BAR

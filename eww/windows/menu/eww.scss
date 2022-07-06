@@ -31,7 +31,8 @@ $black2:    #1E1E2E;
 .profile {
     background-color: $black;
     border-radius: 10px;
-    border-top: 5px solid $sky;
+    border-left: 5px solid $sky;
+    border-right: 5px solid $sky;
 }
 
 .profile-name {
@@ -57,7 +58,8 @@ $black2:    #1E1E2E;
     background-color: $black;
     border-radius: 10px;
     padding: 5px;
-    border-top: 5px solid $purple;
+    border-left: 5px solid $purple;
+    border-right: 5px solid $purple;
 }
 
 .todo-title {
@@ -110,7 +112,8 @@ $black2:    #1E1E2E;
     font-style: italic;
     font-size: 15px;
     color: $rosewater;
-    border-top: 5px solid $rosewater;
+    border-left: 5px solid $rosewater;
+    border-right: 5px solid $rosewater;
 }
 
 // =================================================================================================
@@ -119,7 +122,8 @@ $black2:    #1E1E2E;
 .weather {
     background-color: $black;
     border-radius: 10px;
-    border-top: 5px solid $teal;
+    border-left: 5px solid $orange;
+    border-right: 5px solid $orange;
 }
 
 .weather-icon {
@@ -143,7 +147,8 @@ $black2:    #1E1E2E;
 .search-bar {
     background-color: $black;
     border-radius: 10px;
-    border-top: 5px solid $red;
+    border-left: 5px solid $red;
+    border-right: 5px solid $red;
 }
 
 .search-inner {
@@ -173,7 +178,8 @@ $black2:    #1E1E2E;
 .media-player {
     background-color: $black;
     border-radius: 10px;
-    border-top: 5px solid $green;
+    border-right: 5px solid $green;
+    border-left: 5px solid $green;
 }
 
 .player-image {
@@ -216,11 +222,12 @@ $black2:    #1E1E2E;
 // TIME & CALENDAR
 // =================================================================================================
 .time {
-    border-top: 5px solid $yellow;
+    border-left: 5px solid $blue;
+    border-right: 5px solid $blue;
     background-color: $black;
     border-radius: 10px;
     font-size: 30px;
-    color: $yellow;
+    color: $blue;
 }
 
 calendar {

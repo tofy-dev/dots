@@ -25,49 +25,75 @@ $black3: #161320;
 }
 
 .topbar {
-}
-
-.icon {
+    background-color: $black3;
+    border-radius: 10px;
 }
 
 // =================================================================================================
 // TIME WIDGET
 // =================================================================================================
-.hour {
+.time {
   font-size: 20px;
   color: $blue;
-  padding-left: 20px;
 }
 
-.min {
-  font-size: 20px;
-  color: $red;
+// =================================================================================================
+// WIFI WIDGET
+// =================================================================================================
+.wifi {
+    color: $red;
+    font-size: 20px;
+    margin: 7px 10px 7px 0px;
+    padding-right: 10px;
+}
+
+.wifi-icon {
+    background-color: $red;
+    color: $black;
+    padding: 0px 15px 0px 15px;
+    margin-right: 10px;
+    font-size: 25px;
+    border-radius: 5px;
+}
+
+// =================================================================================================
+// BATTERY WIDGET
+// =================================================================================================
+.battery {
+    color: $green;
+    font-size: 20px;
+    margin: 7px 10px 7px 0px;
+    padding-right: 10px;
+}
+
+.battery-icon {
+    color: $black;
+    background-color: $green;
+    padding: 0px 15px 0px 15px;
+    margin-right: 10px;
+    font-size: 25px;
+    border-radius: 5px;
 }
 
 // =================================================================================================
 // WORKSPACE WIDGET
 // =================================================================================================
+.workspaces {
+    margin-left: 10px;
+    font-size: 28px;
+}
+
 @for $i from 1 through 10 {
     $main_color : black;
-    @if      $i == 1  {$main_color : $pink}
-    @else if $i == 2  {$main_color : $purple}
-    @else if $i == 3  {$main_color : $maroon}
-    @else if $i == 4  {$main_color : $red}
-    @else if $i == 5  {$main_color : $orange}
-    @else if $i == 6  {$main_color : $yellow}
-    @else if $i == 7  {$main_color : $green}
-    @else if $i == 8  {$main_color : $teal}
-    @else if $i == 9  {$main_color : $blue}
-    @else if $i == 10 {$main_color : $sky}
+    @if      $i == 1  {$main_color : $orange}
+    @else if $i == 2  {$main_color : $red}
+    @else if $i == 3  {$main_color : $purple}
+    @else if $i == 4  {$main_color : $green}
+    @else if $i == 5  {$main_color : $blue}
     .spc#{$i} {
-        font-size: 29px;
-        border-radius: 50px;
+        color: $main_color;
         &.active {
-            color: $black3;
-            background-color: $main_color;
-        }
-        &.inactive {
-            color: $main_color;
+            border-bottom: 3px solid $main_color;
         }
     }
 }
@@ -76,54 +102,13 @@ $black3: #161320;
 // VOLUME/AUDIO
 // =================================================================================================
 .volume {
-    font-size: 29px;
+    font-size: 28px;
     color: $orange;
+    padding-right: 20px;
 }
 
 .media-player {
     background-color: $black3;
-}
-
-.pin-media-player {
-    font-size: 30px;
-    margin-right: 10px;
-    color: $yellow;
-}
-
-.player-title {
-    background-color: $black;
-    font-size: 25;
-    padding-left: 30;
-}
-
-.player-artist {
-    background-color: $black2;
-    font-size: 18;
-    padding-left: 30;
-    font-style: italic;
-}
-
-.player-bar trough {
-    min-height: 10px;
-    progress {
-        min-height: 10px;
-        background-color: $green;
-        border-radius: 5px;
-    }
-}
-
-.media-button {
-    background-color: $black3;
-    font-size: 20;
-    &.prev {
-        color: $purple;
-    }
-    &.pause {
-        color: $red;
-    }
-    &.skip {
-        color: $blue;
-    }
 }
 
 // =================================================================================================
@@ -134,7 +119,7 @@ $black3: #161320;
     border-radius: 5px;
     min-height: 12px;
     min-width: 15px;
-    margin-right: 20px;
+    margin-right: 10px;
 }
 
 .bright-bar trough highlight {
@@ -143,20 +128,22 @@ $black3: #161320;
 }
 
 .bright {
-    font-size: 29px;
+    font-size: 28px;
     color: $maroon;
+    padding-right: 20px;
 }
 
 .power-menu {
-  font-size: 29px;
+  font-size: 28px;
 }
 
 .power-button {
+    font-size: 28px;
     margin-right: 20px;
     &.reboot {
         color: $green;
     }
-    &.logout {
+    &.sleep {
         color: $blue;
     }
     &.lock {

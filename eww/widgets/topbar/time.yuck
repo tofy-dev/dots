@@ -1,13 +1,9 @@
 (defwidget bar-time []
     (eventbox
     :onclick "eww open calendar"
-    (box
+    (box :class "bar-time" :valign "center"
       :space-evenly "false"
-      :spacing 20
-      (box :class "hour bar"
-        hour)
-      (box :class "min bar"
-        min))))
+      (label :class "time" :text "${hour}:${min}"))))
 
 (defpoll hour :interval "0.05s"
   `date | grep -o "..:..:.." | grep -o "..:.." | grep -o "[^:].." | tr -d ':'`)

@@ -1,0 +1,5 @@
+(defwidget battery []
+  (box :class "battery" :space-evenly false
+    (label :class "battery-icon" 
+           :text {EWW_BATTERY.BAT1.capacity > 90 ? "" : EWW_BATTERY.BAT1.capacity > 75 ? "" : EWW_BATTERY.BAT1.capacity > 50 ? "" : EWW_BATTERY.BAT1.capacity > 25 ? "" : ""})
+    (label :class "battery-percent" :text "${EWW_BATTERY.BAT1.capacity}%")))

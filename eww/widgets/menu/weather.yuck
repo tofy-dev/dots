@@ -1,7 +1,7 @@
 (defwidget weather [width height]
   (box :class "weather" :width width :height height
     (box :space-evenly false
-      (label :class "weather-icon" :text "盛" :xalign "0.5" :width 120)
+      (label :class "weather-icon" :text "盛" :xalign "0.3" :width 100)
       (box :orientation "v"
         (label :class "weather-city" :text current-city)
         (label :class "weather-temp" :text "${current-weather}${refresh-weather} °F")
