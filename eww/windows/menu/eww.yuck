@@ -19,11 +19,11 @@
       (todo-list :height 250)
       (media-player :height 100)
       (box :spacing 20 :class "powermenu" :space-evenly false
-        (button :onclick "" :class "power restart" :height 75 :width 75
+        (button :onclick "reboot" :class "power restart" :height 75 :width 75
           (label :text "ﰇ"))
-        (button :onclick "" :class "power sleep" :height 75 :width 75
-          (label :text ""))
-        (button :onclick "" :class "power lock" :height 75 :width 75
+        (button :onclick "systemctl hibernate" :class "power sleep" :height 75 :width 75
+          (label :text "⏾"))
+        (button :onclick "~/Coding/scripts/lockscreen.sh" :class "power lock" :height 75 :width 75
           (label :text ""))
-        (button :onclick "" :class "power shutdown" :height 75 :width 75
+        (button :onclick "poweroff" :class "power shutdown" :height 75 :width 75
           (label :text "")))))
